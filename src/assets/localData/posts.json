@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "type": "CarPool",
+      "_id": "5a247a7231bf5e26a4a1758c",
+      "description": "From Waterloo to North York at 2017-12-03 05:27 (price: 123).",
+      "status": 1
+    },
+    {
+      "type": "CarPool",
+      "_id": "5a2db87429e11a13948244d3",
+      "description": "From Toronto to Ottawa at 2017-12-10 05:42 (price: 22).",
+      "status": 1
+    },
+    {
+      "type": "CarPool",
+      "_id": "5a2db8cc29e11a13948244d4",
+      "description": "From Toronto to Waterloo at 2017-12-10 05:44 (price: 221).",
+      "status": 0
+    }
+  ],
+  "success": true,
+  "message": "has posts"
+}

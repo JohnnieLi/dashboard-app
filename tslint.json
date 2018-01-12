@@ -14,8 +14,8 @@
     "deprecation": {
       "severity": "warn"
     },
-    "eofline": true,
-    "forin": true,
+    "eofline": false,
+    "forin": false,
     "import-blacklist": [
       true,
       "rxjs",

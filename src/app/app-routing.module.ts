@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
     { path: 'dashboard', loadChildren: './layout/layout.module#LayoutModule' },
-    
 ];
 
 @NgModule({

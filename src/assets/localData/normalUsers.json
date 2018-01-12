@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "_id": "5a5296cf4b59740c5c647f55",
+      "username": "704364321@qq.com",
+      "lastName": "Smith",
+      "firstName": "Adney",
+      "status": 1
+    },
+    {
+      "_id": "59ad77db63fb74d71ea2657c",
+      "username": "604364321@qq.com",
+      "firstName": "Aiken",
+      "lastName": "Williams",
+      "status": 0
+    },
+    {
+      "_id": "5a52a103a0e6790d882eceb8",
+      "username": "jiangqi319@gmail.com",
+      "lastName": "Williams",
+      "firstName": "Fabia",
+      "status": 1
+    },
+    {
+      "_id": "5a5572ff5b4a8d0342ee6214",
+      "username": "johnnie@gmail.com",
+      "status": 1
+    }
+  ],
+  "success": true,
+  "message": "has carpools"
+}
+
