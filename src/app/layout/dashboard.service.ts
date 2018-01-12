@@ -5,21 +5,21 @@ import {Observable} from 'rxjs/Rx';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {APP_CONFIG, IAppConfig} from '../app.config'; // global config
 import 'rxjs/add/operator/map';
-
+import {environment} from './../../environments/environment';
 @Injectable()
 export class DashboardService {
 
 
     constructor(@Inject(APP_CONFIG) private config: IAppConfig,
                 private router: ActivatedRoute, private http: HttpClient) {
-
+        console.log(environment);
     }
 
 
     public getUsers(type: number): Observable<any> {
         switch (type) {
             case 0: // 0 = normal user
-                if (this.config.localData) {
+                if (environment.localData) {
                     return this.http.get(this.config.localPath + '/normalUsers.json');
                 } else {
                     return this.http.get(this.config.apiEndpoint + '/dashboard/getUsers?type=0');
@@ -38,7 +38,7 @@ export class DashboardService {
 
 
     public getPostsByUserID(user_id: String): Observable<any> {
-        if (this.config.localData) {
+        if (environment.localData) {
             return this.http.get(this.config.localPath + '/posts.json');
         } else {
             return this.http.get(this.config.apiEndpoint + '/dashboard/getPosts?user_id=' + user_id);
@@ -56,7 +56,7 @@ export class DashboardService {
 
 
     public getCommentsByUserID(user_id: String): Observable<any> {
-        if (this.config.localData) {
+        if (environment.localData) {
             return this.http.get(this.config.localPath + '/comments.json');
         } else {
             return this.http.get(this.config.apiEndpoint + '/dashboard/getComments?user_id=' + user_id);
@@ -64,7 +64,7 @@ export class DashboardService {
     }
 
     public getProfileByUserID(user_id: String): Observable<any> {
-        if (this.config.localData) {
+        if (environment.localData) {
             return this.http.get(this.config.localPath + '/profile.json');
         } else {
             return this.http.get(this.config.apiEndpoint + '/dashboard/getProfile?user_id=' + user_id);
@@ -108,6 +108,7 @@ export interface User {
     firstName: String;
     lastName: String;
     username: String;
+    authType: String;
     status: number;
 }
 

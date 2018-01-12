@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {APP_CONFIG, AppConfig} from './app.config';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ],
     imports: [
         BrowserModule,
+        NgbModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule

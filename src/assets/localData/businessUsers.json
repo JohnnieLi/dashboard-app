@@ -5,6 +5,7 @@
       "username": "20204985@qq.com",
       "firstName": "Eric",
       "lastName": "Lan",
+      "authType": "register",
       "status": 1
     }
   ],

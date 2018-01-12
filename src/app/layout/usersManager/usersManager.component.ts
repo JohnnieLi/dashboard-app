@@ -17,6 +17,7 @@ export class UserManagerComponent implements OnInit {
     public lastNameSearchText: String;
     public statusSearchNumber: number;
     public usernameSearchText: String;
+    public authTypeSearchText: String;
 
     constructor(public dashService: DashboardService) {
 

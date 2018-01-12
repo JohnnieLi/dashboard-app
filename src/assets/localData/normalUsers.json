@@ -5,6 +5,7 @@
       "username": "704364321@qq.com",
       "lastName": "Smith",
       "firstName": "Adney",
+      "authType": "register",
       "status": 1
     },
     {
@@ -12,6 +13,7 @@
       "username": "604364321@qq.com",
       "firstName": "Aiken",
       "lastName": "Williams",
+      "authType": "facebook",
       "status": 0
     },
     {
@@ -19,11 +21,13 @@
       "username": "jiangqi319@gmail.com",
       "lastName": "Williams",
       "firstName": "Fabia",
+      "authType": "google",
       "status": 1
     },
     {
       "_id": "5a5572ff5b4a8d0342ee6214",
       "username": "johnnie@gmail.com",
+      "authType": "google",
       "status": 1
     }
   ],

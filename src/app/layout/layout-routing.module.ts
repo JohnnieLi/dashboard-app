@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {UsernameFilterPipe} from './sharedPipes/usernameFiliter.pipe';
 import {FirstNameFilterPipe} from './sharedPipes/firstNameFilter.pipe';
 import {LastNameFilterPipe} from './sharedPipes/lastNameFilter.pipe';
+import {AuthTypeFilterPipe} from './sharedPipes/authTypeFilter.pipe';
 import {StatusFilterPipe} from './sharedPipes/statusFilter.pipe';
 import {MyOwnCustomMaterialModule} from '../CustomMaterialModule.module';
 
@@ -53,6 +54,7 @@ const routes: Routes = [
         FirstNameFilterPipe,
         UsernameFilterPipe,
         LastNameFilterPipe,
+        AuthTypeFilterPipe,
         StatusFilterPipe
     ]
 })
