@@ -1,0 +1,53 @@
+<div class="row">
+        <div class="col col-xl-6 col-lg-12">
+           <div class="card mb-3">
+                <div class="card-header">Normal Users</div>
+                <table class="card-body table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+						<th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of normalUsers; let i = index" [attr.data-index]='i' [routerLink]="['../normalUser',user._id]" [ngClass]="{'status': user.status == 0}">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.username}}</td>
+                        <td>active</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col col-xl-6 col-lg-12">            
+            <div class="card mb-3">
+                <div class="card-header">Business Users</div>
+                <table class="card-body table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+						<th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of businessUsers; let i = index" [attr.data-index]='i' [routerLink]="['../normalUser/',user._id]" [ngClass]="{'status': user.status == 0}">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.username}}</td>
+                        <td>active</td>
+                    </tr>
+                   
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

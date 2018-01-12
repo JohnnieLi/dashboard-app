@@ -1,0 +1,28 @@
+<div class="card-body">
+    <ul class="timeline">
+        <li *ngFor='let comment of comments; let i = index' [attr.data-index]='i' [ngClass]="{ 'timeline-inverted': (i+1)%2==0 , 'status': comment.status == 0}">
+            <div class="timeline-badge info"><i class="fa fa-save"></i>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title">{{comment.date}}</h4>
+                </div>
+                <div class="timeline-body">
+                    <p>{{comment.message}}</p>
+                    <hr>
+                    <button (click)="activate(comment._id)">activate</button>
+                    <button (click)="deactivate(comment._id)">deactivate</button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Setting
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button">Active</button>
+                            <button class="dropdown-item" type="button">Deactive</button>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

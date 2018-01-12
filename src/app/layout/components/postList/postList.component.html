@@ -1,0 +1,40 @@
+
+                <div class="card-header">
+                    <i class="fa fa-bell fa-fw"></i> Post List
+                </div>
+                  <div class="list-group post">
+                    <div *ngFor='let post of posts'class="list-group-item " [ngClass]="{'status': post.status == 0}">
+                            <div class="row">   
+                        <div class="col-sm-8">
+                           <h4 class="list-group-item-heading">{{post.type}}</h4>
+                            <p class="list-group-item-text">{{post.description}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                                <button (click)="activate(post.type,post._id)">activate</button>
+                                <button (click)="deactivate(post.type,post._id)">deactivate</button>
+                            <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Config
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button class="dropdown-item" type="button">Active</button>
+                                        <button class="dropdown-item" type="button">Deactive</button>
+                                    </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                <!-- <div class="list-group-item ">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                </div>
+                <a href="javascript:void(0)" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                </a>
+                <a href="javascript:void(0)" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                </a> -->
+            </div>
+           
