@@ -11,12 +11,11 @@
             </li>
         </ul>
 
-        <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Admin<span class="fa fa-user-o" aria-hidden="true"></span></button>
+        <div ngbDropdown [class.invisible]="!isAccountVisible" class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{title}}<span class="fa fa-user-o" aria-hidden="true"></span></button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button class="dropdown-item">Action - 1</button>
-                <button class="dropdown-item">Another Action</button>
-                <button class="dropdown-item">Log Out</button>
+                <button class="dropdown-item" [class.invisible]="!isSuperAdmin" routerLink="dashboard/adminsManager">Manage Admin Users</button>
+                <button class="dropdown-item" (click)="logoutClick()">Log Out</button>
             </div>
         </div>
     </div>

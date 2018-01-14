@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {APP_CONFIG, AppConfig} from './app.config';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {LoginService} from './login.service';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         HttpClientModule,
         BrowserAnimationsModule
     ],
-    providers: [{provide: APP_CONFIG, useValue: AppConfig}],
+    providers: [{provide: APP_CONFIG, useValue: AppConfig}, LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

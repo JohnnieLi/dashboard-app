@@ -15,7 +15,8 @@ import {LastNameFilterPipe} from './sharedPipes/lastNameFilter.pipe';
 import {AuthTypeFilterPipe} from './sharedPipes/authTypeFilter.pipe';
 import {StatusFilterPipe} from './sharedPipes/statusFilter.pipe';
 import {MyOwnCustomMaterialModule} from '../CustomMaterialModule.module';
-
+import {AdminsManagerComponent} from './adminsMansger/adminsManager.component';
+import {OnlySuperAdminGuard} from '../guards/onlySuperAdminGuard';
 const routes: Routes = [
     {
         path: '',
@@ -41,6 +42,11 @@ const routes: Routes = [
                 path: 'businessUser/:id',
                 component: BusinessUserComponent,
             },
+            {
+                path: 'adminsManager',
+                component: AdminsManagerComponent,
+                canActivate: [OnlySuperAdminGuard]
+            },
 
         ]
     }
@@ -51,12 +57,14 @@ const routes: Routes = [
     exports: [RouterModule],
     declarations: [
         UserManagerComponent,
+        AdminsManagerComponent,
         FirstNameFilterPipe,
         UsernameFilterPipe,
         LastNameFilterPipe,
         AuthTypeFilterPipe,
         StatusFilterPipe
-    ]
+    ],
+    providers: [OnlySuperAdminGuard]
 })
 export class LayoutRoutingModule {
 }
