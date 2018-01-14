@@ -32,6 +32,10 @@ export class AlwaysLoggedInGuard implements CanActivate {
                 this.router.navigate(['/']);
                 return false;
             }
+        }).catch( error => {
+            window.alert('You don\'t have permission to access.');
+            this.router.navigate(['/']);
+            return Observable.of(false);
         });
     }
 }

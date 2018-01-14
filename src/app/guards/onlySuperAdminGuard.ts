@@ -32,6 +32,8 @@ export class OnlySuperAdminGuard implements CanActivate {
                 // this.router.navigate(['/dashboard']);
                 return false;
             }
+        }).catch( error => {
+            return Observable.of(false);
         });
     }
 }
