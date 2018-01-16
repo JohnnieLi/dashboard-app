@@ -1,5 +1,4 @@
-
-<h1 class="title" >Search</h1>
+<h1 class="title">Search</h1>
 
 <div class="row">
     <div class="input-group input-group-sm mb-3 col col-xl-4 col-lg-12">
@@ -49,39 +48,171 @@
 
 
 <div class="row">
+    <div class="col col-md-6">
+        <div class="demo-tab-content">
+            <div class="card mb-3">
+                <div class="card-header">users
+                    <button class="btn" type="button" (click)="addUserClick()"><i class="fa fa-user-plus"></i></button>
+                </div>
+                <table class="card-body table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of adminUsers | usernameFilter : usernameSearchText | firstNameFilter: firstNameSearchText | lastNameFilter: lastNameSearchText | statusFilter: statusSearchNumber | authTypeFilter: authTypeSearchText  let i = index" (click)="adminClick()">
+                        <th scope="row">{{i+1}}</th>
+                        <td [ngClass]="{'status': user.status == 0}">{{user.firstName}}</td>
+                        <td [ngClass]="{'status': user.status == 0}">{{user.lastName}}</td>
+                        <td [ngClass]="{'status': user.status == 0}">{{user.username}}</td>
+                        <td *ngIf="user.status == 1; else inactive " [ngClass]="{'status': user.status == 0}">active
+                        </td>
+                        <ng-template #inactive>
+                            <td [ngClass]="{'status': user.status == 0}">inactive</td>
+                        </ng-template>
+                        <td>
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-primary" id="dropdown1" ngbDropdownToggle><i
+                                        class="fa fa-cogs" aria-hidden="true"></i></button>
+                                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                                    <button class="dropdown-item" [routerLink]="['../normalUser',user._id]">More
+                                    </button>
+                                    <button class="dropdown-item">Another Action</button>
+                                    <button class="dropdown-item">Something else</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-            <div class="demo-tab-content">
-                <div class="card mb-3">
-                    <div class="card-header">users</div>
-                    <table class="card-body table table-hover">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            <th>AuthType</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let user of adminUsers | usernameFilter : usernameSearchText | firstNameFilter: firstNameSearchText | lastNameFilter: lastNameSearchText | statusFilter: statusSearchNumber | authTypeFilter: authTypeSearchText  let i = index"
-                            [routerLink]="['../normalUser',user._id]" [ngClass]="{'status': user.status == 0}">
-                            <th scope="row">{{i+1}}</th>
-                            <td>{{user.firstName}}</td>
-                            <td>{{user.lastName}}</td>
-                            <td>{{user.username}}</td>
-                            <td>{{user.authType}}</td>
-                            <td *ngIf="user.status == 1; else inactive ">active</td>
-                            <ng-template #inactive>
-                                <td>inactive</td>
-                            </ng-template>
-                        </tr>
-                        </tbody>
-                    </table>
+    <div class="col col-md-6">
+        <!--add user form-->
+        <form class="well boarder" [hidden]="addAdminHidden">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="Enter First Name Here.." class="form-control">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea placeholder="Enter Address Here.." rows="3" class="form-control"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="Enter City Name Here.." class="form-control">
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>State</label>
+                        <input type="text" placeholder="Enter State Name Here.." class="form-control">
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>Zip</label>
+                        <input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Title</label>
+                        <input type="text" placeholder="Enter Designation Here.." class="form-control">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Company</label>
+                        <input type="text" placeholder="Enter Company Name Here.." class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="text" placeholder="Enter Email Address Here.." class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Website</label>
+                    <input type="text" placeholder="Enter Website Name Here.." class="form-control">
+                </div>
+                <button type="button" class="btn btn-lg btn-info" (click)="submitAdminClicked()">Submit</button>
+                <button type="button" class="btn btn-lg btn-info" (click)="cancelAdminClicked()">Cancel</button>
+            </div>
+        </form>
+        <!--check user role-->
+        <div id="profile" class="panel panel-info boarder" [hidden]="adminProfileHidden">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sheena Shrestha</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center">
+                        <img alt="User Pic"
+                             src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+                             class="img-circle img-responsive">
+                    </div>
+                    <div class=" col-md-9 col-lg-9 ">
+                        <table class="table table-user-information">
+                            <tbody>
+                            <tr>
+                                <td>Department:</td>
+                                <td>Programming</td>
+                            </tr>
+                            <tr>
+                                <td>Hire date:</td>
+                                <td>06/23/2013</td>
+                            </tr>
+                            <tr>
+                                <td>Date of Birth</td>
+                                <td>01/24/1988</td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>Female</td>
+                            </tr>
+                            <tr>
+                                <td>Home Address</td>
+                                <td>Kathmandu,Nepal</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><a href="mailto:info@support.com">info@support.com</a></td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number</td>
+                                <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        <a href="#" class="btn btn-primary">My Sales Performance</a>
+                        <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                    </div>
                 </div>
             </div>
+            <div class="panel-footer">
 
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
