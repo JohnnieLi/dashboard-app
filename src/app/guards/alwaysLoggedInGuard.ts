@@ -3,7 +3,7 @@ import {CanActivate} from '@angular/router';
 import {LoginService} from '../login.service';
 import {ActivatedRoute, Router, ActivatedRouteSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-
+import 'rxjs/add/operator/catch';
 @Injectable()
 export class AlwaysLoggedInGuard implements CanActivate {
 

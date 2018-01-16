@@ -9,9 +9,10 @@ import {ChatComponent}  from './chat/chat.component';
 import {PostListComponent}  from './postList/postList.component';
 import {ProfileComponent}  from './profile/profile.component';
 import { ChartsModule as Ng2Charts } from 'ng2-charts';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
     imports: [
-        CommonModule,Ng2Charts
+        CommonModule,Ng2Charts,NgbModule
     ],
     declarations: [        
         TimelineComponent,

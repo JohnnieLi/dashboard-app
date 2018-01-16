@@ -5,7 +5,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class StatusFilterPipe implements PipeTransform {
     transform(items: any[], searchText: number): any[] {
-        console.log(items, searchText);
+        // console.log(items, searchText);
         if (!items) {
             return [];
         }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User, DashboardService} from '../dashboard.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {DashboardService, User} from '../dashboard.service';
+import {PaginationHelper} from '../../helpers/pagination.helper';
 
 @Component({
     selector: 'app-users',
@@ -19,21 +19,27 @@ export class UserManagerComponent implements OnInit {
     public usernameSearchText: String;
     public authTypeSearchText: String;
 
-    constructor(public dashService: DashboardService) {
+    public nPHelper: PaginationHelper;
+    public bPHelper: PaginationHelper;
 
+
+    constructor(public dashService: DashboardService) {
+        this.nPHelper = new PaginationHelper();
+        this.bPHelper = new PaginationHelper();
     }
 
 
     ngOnInit() {
-
         this.dashService.getUsers(0).subscribe(
             data => {
                 this.normalUsers = data.users;
+                this.nPHelper.initPageHelper(this.normalUsers);
             }
         );
         this.dashService.getUsers(1).subscribe(
             data => {
                 this.businessUsers = data.users;
+                this.bPHelper.initPageHelper(this.businessUsers, 10);
             }
         );
     }

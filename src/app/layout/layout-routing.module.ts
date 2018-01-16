@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from './layout.component';
 import {UserManagerComponent} from './usersManager/usersManager.component';
 import {NormalUserModule} from './normalUserProfile/normalUser.module';
@@ -17,6 +17,8 @@ import {StatusFilterPipe} from './sharedPipes/statusFilter.pipe';
 import {MyOwnCustomMaterialModule} from '../CustomMaterialModule.module';
 import {AdminsManagerComponent} from './adminsMansger/adminsManager.component';
 import {OnlySuperAdminGuard} from '../guards/onlySuperAdminGuard';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 const routes: Routes = [
     {
         path: '',
@@ -53,7 +55,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), MyOwnCustomMaterialModule, NormalUserModule, BusinessUserModule],
+    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), NgbModule, MyOwnCustomMaterialModule, NormalUserModule, BusinessUserModule],
     exports: [RouterModule],
     declarations: [
         UserManagerComponent,

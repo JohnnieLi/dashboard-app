@@ -3,23 +3,19 @@
                     <i class="fa fa-bell fa-fw"></i> Post List
                 </div>
                   <div class="list-group post">
-                    <div *ngFor='let post of posts'class="list-group-item " [ngClass]="{'status': post.status == 0}">
-                            <div class="row">   
-                        <div class="col-sm-8">
+                    <div *ngFor='let post of posts'class="list-group-item ">
+                            <div class="row">
+                        <div class="col-sm-8" [ngClass]="{'status': post.status == 0}">
                            <h4 class="list-group-item-heading">{{post.type}}</h4>
                             <p class="list-group-item-text">{{post.description}}</p>
                         </div>
                         <div class="col-sm-4">
-                                <button (click)="activate(post.type,post._id)">activate</button>
-                                <button (click)="deactivate(post.type,post._id)">deactivate</button>
-                            <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Config
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <button class="dropdown-item" type="button">Active</button>
-                                        <button class="dropdown-item" type="button">Deactive</button>
-                                    </div>
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-primary" id="dropdown1" ngbDropdownToggle>More</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                                    <button class="dropdown-item" (click)="activate(post.type,post._id)" >Active</button>
+                                    <button class="dropdown-item" (click)="deactivate(post.type,post._id)">Deactive</button>
+                                </div>
                             </div>
                         </div>
                         </div>

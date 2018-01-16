@@ -1,5 +1,4 @@
-
-<h1 class="title" >Search</h1>
+<h1 class="title">Search</h1>
 
 <div class="row">
     <div class="input-group input-group-sm mb-3 col col-xl-4 col-lg-12">
@@ -69,20 +68,46 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let user of normalUsers | usernameFilter : usernameSearchText | firstNameFilter: firstNameSearchText | lastNameFilter: lastNameSearchText | statusFilter: statusSearchNumber | authTypeFilter: authTypeSearchText  let i = index"
-                            [routerLink]="['../normalUser',user._id]" [ngClass]="{'status': user.status == 0}">
+                        <tr *ngFor="let user of nPHelper.pageItems | usernameFilter : usernameSearchText | firstNameFilter: firstNameSearchText | lastNameFilter: lastNameSearchText | statusFilter: statusSearchNumber | authTypeFilter: authTypeSearchText  let i = index"
+                        >
                             <th scope="row">{{i+1}}</th>
-                            <td>{{user.firstName}}</td>
-                            <td>{{user.lastName}}</td>
-                            <td>{{user.username}}</td>
-                            <td>{{user.authType}}</td>
-                            <td *ngIf="user.status == 1; else inactive ">active</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.firstName}}</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.lastName}}</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.username}}</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.authType}}</td>
+                            <td *ngIf="user.status == 1; else inactive " [ngClass]="{'status': user.status == 0}">
+                                active
+                            </td>
                             <ng-template #inactive>
-                                <td>inactive</td>
+                                <td [ngClass]="{'status': user.status == 0}">inactive</td>
                             </ng-template>
+                            <td>
+                                <div ngbDropdown class="d-inline-block">
+                                    <button class="btn btn-outline-primary" id="dropdown1" ngbDropdownToggle><i
+                                            class="fa fa-cogs" aria-hidden="true"></i></button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdown1">
+                                        <button class="dropdown-item" [routerLink]="['../normalUser',user._id]">More
+                                        </button>
+                                        <button class="dropdown-item">Another Action</button>
+                                        <button class="dropdown-item">Something else</button>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div >
+                            <select   (change)="nPHelper.pageSizeChange($event.target.value)">
+                                <option value="1">1</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select> / page
+                        <ngb-pagination class="col col-5"
+                                        [collectionSize]="nPHelper.collectionSize" [pageSize]="nPHelper.pageSize" [(page)]="nPHelper.page"
+                                        [maxSize]="3"
+                                        [boundaryLinks]="true"
+                                        (pageChange)="nPHelper.pageChange($event)"></ngb-pagination>
+                    </div>
                 </div>
             </div>
 
@@ -106,20 +131,46 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let user of businessUsers | usernameFilter : usernameSearchText | firstNameFilter: firstNameSearchText | lastNameFilter: lastNameSearchText | statusFilter: statusSearchNumber | authTypeFilter: authTypeSearchText let i = index"
-                            [routerLink]="['../normalUser',user._id]" [ngClass]="{'status': user.status == 0}">
+                        <tr *ngFor="let user of bPHelper.pageItems | usernameFilter : usernameSearchText | firstNameFilter: firstNameSearchText | lastNameFilter: lastNameSearchText | statusFilter: statusSearchNumber | authTypeFilter: authTypeSearchText let i = index"
+                        >
                             <th scope="row">{{i+1}}</th>
-                            <td>{{user.firstName}}</td>
-                            <td>{{user.lastName}}</td>
-                            <td>{{user.username}}</td>
-                            <td>{{user.authType}}</td>
-                            <td *ngIf="user.status == 1; else inactive ">active</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.firstName}}</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.lastName}}</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.username}}</td>
+                            <td [ngClass]="{'status': user.status == 0}">{{user.authType}}</td>
+                            <td *ngIf="user.status == 1; else inactive " [ngClass]="{'status': user.status == 0}">
+                                active
+                            </td>
                             <ng-template #inactive>
-                                <td>inactive</td>
+                                <td [ngClass]="{'status': user.status == 0}">inactive</td>
                             </ng-template>
+                            <td>
+                                <div ngbDropdown class="d-inline-block">
+                                    <button class="btn btn-outline-primary" id="dropdown2" ngbDropdownToggle><i
+                                            class="fa fa-cogs" aria-hidden="true"></i></button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdown2">
+                                        <button class="dropdown-item" [routerLink]="['../normalUser',user._id]">More
+                                        </button>
+                                        <button class="dropdown-item">Another Action</button>
+                                        <button class="dropdown-item">Something else</button>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div >
+                        <select  (change)="bPHelper.pageSizeChange($event.target.value)">
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select> / page
+                        <ngb-pagination class="col col-5"
+                                        [collectionSize]="bPHelper.collectionSize" [pageSize]="bPHelper.pageSize" [(page)]="bPHelper.page"
+                                        [maxSize]="3"
+                                        [boundaryLinks]="true"
+                                        (pageChange)="bPHelper.pageChange($event)"></ngb-pagination>
+                    </div>
                 </div>
             </div>
         </mat-tab>
