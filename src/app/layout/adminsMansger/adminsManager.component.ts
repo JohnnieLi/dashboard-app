@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User, DashboardService} from '../dashboard.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {DashboardService, User} from '../dashboard.service';
 
 @Component({
     selector: 'app-users',
@@ -11,11 +10,14 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 export class AdminsManagerComponent implements OnInit {
 
     public adminUsers: User[];
+    public selectedAdmin: SelectedAdmin;
+    public addedAdmin: AddedAdmin;
     public addAdminHidden: boolean;
     public adminProfileHidden: boolean;
 
     constructor(public dashService: DashboardService) {
-
+        this.selectedAdmin = new SelectedAdmin();
+        this.addedAdmin = new AddedAdmin();
     }
 
 
@@ -27,9 +29,7 @@ export class AdminsManagerComponent implements OnInit {
                 this.adminUsers = data.users;
             }
         );
-
     }
-
 
 
     addUserClick() {
@@ -42,15 +42,50 @@ export class AdminsManagerComponent implements OnInit {
         this.adminProfileHidden = true;
     }
 
-    cancelAdminClicked(){
+    cancelAdminClicked() {
         this.addAdminHidden = true;
         this.adminProfileHidden = true;
     }
 
-    adminClick() {
+    adminClick(selectedAdmin) {
+        this.selectedAdmin = selectedAdmin;
         this.adminProfileHidden = false;
         this.addAdminHidden = true;
     }
 
+    resetPass() {
+        this.selectedAdmin.password = Math.random().toString(36).slice(2, 8);
+    }
+}
 
+
+export class AddedAdmin {
+
+    firstName: string;
+    lastName: string;
+    username: string;
+    authType: string;
+    role: number;
+    password: string;
+    status: number;
+
+    constructor() {
+    }
+}
+
+
+
+
+export class SelectedAdmin {
+
+    _id: string;
+    firstName: string;
+    lastName: string;
+    username: string;
+    authType: string;
+    password: string;
+    status: number;
+
+    constructor() {
+    }
 }

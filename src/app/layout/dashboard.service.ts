@@ -1,4 +1,4 @@
-import {Injectable, Inject} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 // import { Http , Headers,Response,RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
@@ -6,6 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {APP_CONFIG, IAppConfig} from '../app.config'; // global config
 import 'rxjs/add/operator/map';
 import {environment} from './../../environments/environment';
+
 @Injectable()
 export class DashboardService {
 
@@ -104,58 +105,57 @@ export class DashboardService {
 }
 
 export interface User {
-    _id: String;
-    firstName: String;
-    lastName: String;
-    username: String;
-    authType: String;
+    _id: string;
+    firstName: string;
+    lastName: string;
+    username: string;
+    authType: string;
     status: number;
 }
 
 
 export class Profile {
-    public _id: String;
-    public firstName: String;
-    public lastName: String;
-    public username: String;
-    public imageUrl: String;
+    public _id: string;
+    public firstName: string;
+    public lastName: string;
+    public username: string;
+    public imageUrl: string;
     public status: number;
     public role: number;
-    public category: String;
-    public phone: String;
+    public category: string;
+    public phone: string;
     public grade: number;
     public path: string;
-
 }
 
 
 export class Post {
-    public _id: String;
-    public type: String;
-    public description: String;
+    public _id: string;
+    public type: string;
+    public description: string;
     public status: number;
 }
 
 export class Comment {
-    public _id: String;
-    public message: String;
+    public _id: string;
+    public message: string;
     public date: Date;
     public status: number;
 }
 
 
 export class subComment {
-    constructor(public _id: String,
+    constructor(public _id: string,
                 public date: Date,
                 public businessManId: number,
-                public businessMan_Id: String,
-                public fromUser_Id: String,
-                public fromUsername: String,
-                public fromUserIamgePath: String,
-                public toUser_Id: String,
-                public toUsername: String,
-                public topic_Id: String,
+                public businessMan_Id: string,
+                public fromUser_Id: string,
+                public fromUsername: string,
+                public fromUserIamgePath: string,
+                public toUser_Id: string,
+                public toUsername: string,
+                public topic_Id: string,
                 public isTopic: Boolean,
-                public message: String,) {
+                public message: string) {
     }
 }
