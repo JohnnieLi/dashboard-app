@@ -111,13 +111,47 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label>Role</label>
-                        <input type="text" disabled placeholder="Click Here.." class="form-control">
+                        <div (click)="clickRoleSelector()">
+                        <input type="text" disabled placeholder="Click Here..." name="role" [(ngModel)]="addedAdmin.role" class="form-control" >
+                        </div>
                     </div>
+
                     <div class="col-sm-6 form-group">
                         <label>Grade</label>
                         <input type="text" placeholder="Enter Grade Here.." class="form-control">
                     </div>
                 </div>
+                <div class="roleSelector row" [hidden]="roleSelectorHidden" >
+                    <div class="dgradio-sb body col col-sm-10">
+                        <input type="radio"   [(ngModel)]="roleRadiosValue" [checked]="true" class="dg-item" name="roles" id="role90" [value]="90" />
+                        <label for="role90" class="dg-label dg-30"  data-caption="level 1">
+                            <div class="customTooltip">User Manager
+                                <span class="tooltiptext"><ul><li>permission1</li><li>permission2</li></ul></span>
+                            </div> <span class="dg-bg"></span>
+                        </label>
+
+                        <input type="radio"  [(ngModel)]="roleRadiosValue" class="dg-item" name="roles" id="role91" [value]="91" />
+                        <label for="role91" class="dg-label dg-60"  data-caption="level 2">
+                            <div class="customTooltip">Premium Manager
+                                <span class="tooltiptext"><ul><li>...</li><li>permission3</li><li>permission4</li></ul></span>
+                            </div><span class="dg-bg"></span>
+                        </label>
+                        <!--   <input type="radio" class="dg-item" name="your-group-2" id="radio8" >
+                          <label for="radio8" class="dg-label dg-100"  data-caption="half is good">
+                            Half-Yearly<span class="dg-bg"></span>
+                          </label> -->
+                        <input type="radio" [(ngModel)]="roleRadiosValue" class="dg-item" name="roles" id="role99" [value]="99"/>
+                        <label for="role99" class="dg-label dg-100"  data-caption="Super Admin!">
+                            <div class="customTooltip">Full Access
+                                <span class="tooltiptext"><ul><li>...</li><li>permission5</li><li>permission6</li></ul></span>
+                            </div>
+                            <span class="dg-bg"></span>
+                        </label>
+                    </div>
+                    <div class="col col-sm-2"><button class="btn roleConfirmBtn" type="button" (click)="roleConfirm()">Confirm!</button></div>
+
+                </div>
+
                 <!--<div class="row">-->
                     <!--<div class="col-sm-6 form-group">-->
                         <!--<label>Title</label>-->
@@ -197,5 +231,7 @@
     </div>
 
 </div>
+
+
 
 

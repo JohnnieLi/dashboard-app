@@ -14,6 +14,8 @@ export class AdminsManagerComponent implements OnInit {
     public addedAdmin: AddedAdmin;
     public addAdminHidden: boolean;
     public adminProfileHidden: boolean;
+    public roleSelectorHidden: boolean;
+    public roleRadiosValue = 90; // default role
 
     constructor(public dashService: DashboardService) {
         this.selectedAdmin = new SelectedAdmin();
@@ -24,6 +26,7 @@ export class AdminsManagerComponent implements OnInit {
     ngOnInit() {
         this.addAdminHidden = true;
         this.adminProfileHidden = true;
+        this.roleSelectorHidden = true;
         this.dashService.getUsers(0).subscribe(
             data => {
                 this.adminUsers = data.users;
@@ -32,6 +35,16 @@ export class AdminsManagerComponent implements OnInit {
     }
 
 
+    clickRoleSelector() {
+
+        this.roleSelectorHidden = false;
+        // console.log(this.roleSelectorHidden);
+    }
+
+    roleConfirm() {
+        this.addedAdmin.role = this.roleRadiosValue;
+        this.roleSelectorHidden = true;
+    }
     addUserClick() {
         this.addAdminHidden = false;
         this.adminProfileHidden = true;
@@ -72,8 +85,6 @@ export class AddedAdmin {
     constructor() {
     }
 }
-
-
 
 
 export class SelectedAdmin {
