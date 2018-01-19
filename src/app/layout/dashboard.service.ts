@@ -72,6 +72,29 @@ export class DashboardService {
         }
     }
 
+    public addAdminUser(adminUser: User): Observable<any> {
+        if (environment.localData) {
+            return this.http.get(this.config.localPath + '/addAdminUser.json');
+        } else {
+            return this.http.post(this.config.apiEndpoint + '/dashboard/addAdminUser', {adminUser: adminUser});
+        }
+    }
+
+    public updateAdminUser(adminUser: User): Observable<any> {
+        if (environment.localData) {
+            return this.http.get(this.config.localPath + '/updateAdminUser.json');
+        } else {
+            return this.http.post(this.config.apiEndpoint + '/dashboard/updateAdminUser', {adminUser: adminUser});
+        }
+    }
+
+    public deleteAdminUser(adminUser: User): Observable<any> {
+        if (environment.localData) {
+            return this.http.get(this.config.localPath + '/deleteAdminUser.json');
+        } else {
+            return this.http.post(this.config.apiEndpoint + '/dashboard/deleteAdminUser', {adminUser: adminUser});
+        }
+    }
     // public getBusinessManByIdWithUserId(_id:string, user_id:string):Observable<any>{
     //     return this.http.get(this.config.apiEndpoint+'/editMyDetail?_id='+_id+'&user_id='+user_id);
     // }
@@ -104,13 +127,18 @@ export class DashboardService {
 
 }
 
-export interface User {
+export class User {
     _id: string;
     firstName: string;
     lastName: string;
     username: string;
     authType: string;
     status: number;
+    role: number;
+    password: string;
+
+    constructor() {
+    }
 }
 
 

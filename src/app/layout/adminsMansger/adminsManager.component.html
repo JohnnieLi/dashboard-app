@@ -82,7 +82,22 @@
                                 <div ngbDropdownMenu aria-labelledby="dropdown1">
                                     <button class="dropdown-item" [routerLink]="['../normalUser',user._id]">More
                                     </button>
-                                    <button class="dropdown-item">Another Action</button>
+                                    <button class="dropdown-item" (click)="open(content)">Delete</button>
+                                    <ng-template #content let-c="close" let-d="dismiss">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Confirm</h4>
+                                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Confirm to Delete?&hellip;</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-dark" (click)="deleteAdminUser(user)">Delete</button>
+                                            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancel</button>
+                                        </div>
+                                    </ng-template>
                                     <button class="dropdown-item">Something else</button>
                                 </div>
                             </div>
@@ -101,11 +116,11 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label>First Name</label>
-                        <input type="text" placeholder="Enter First Name Here.." class="form-control">
+                        <input type="text" placeholder="Enter First Name Here.." name="firstName" [(ngModel)]="addedAdmin.firstName" class="form-control">
                     </div>
                     <div class="col-sm-6 form-group">
                         <label>Last Name</label>
-                        <input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                        <input type="text" placeholder="Enter Last Name Here.." name="lastName" [(ngModel)]="addedAdmin.lastName" class="form-control">
                     </div>
                 </div>
                 <div class="row">
@@ -162,17 +177,17 @@
                         <!--<input type="text" placeholder="Enter Company Name Here.." class="form-control">-->
                     <!--</div>-->
                 <!--</div>-->
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label>Phone Number</label>-->
+                    <!--<input type="text" placeholder="Enter Phone Number Here.." [(ngModel)]="addedAdmin.phoneNumber" class="form-control">-->
+                <!--</div>-->
                 <div class="form-group">
                     <label>Email Address(username)</label>
-                    <input type="text" placeholder="Enter Email Address Here.." class="form-control">
+                    <input type="text" placeholder="Enter Email Address Here.." name="username" [(ngModel)]="addedAdmin.username" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>password</label>
-                    <input type="text" placeholder="Enter Website Name Here.." class="form-control">
+                    <input type="text" placeholder="Enter password Here.." name="password" [(ngModel)]="addedAdmin.password" class="form-control">
                 </div>
                 <button type="button" class="btn btn-lg btn-info" (click)="submitAdminClicked()">Submit</button>
                 <button type="button" class="btn btn-lg btn-info" (click)="cancelAdminClicked()">Cancel</button>
@@ -217,7 +232,7 @@
                             </tbody>
                         </table>
 
-                        <a class="btn btn-primary">Update</a>
+                        <a class="btn btn-primary" (click)="updateAdminClick()">Update</a>
                         <a  class="btn btn-primary" (click)="resetPass()">Reset Password</a>
                     </div>
                 </div>

@@ -48,7 +48,7 @@
 
 
 <div class="row">
-    <mat-tab-group class="col col-xl-12 col-lg-12 demo-tab-group">
+    <mat-tab-group class="col col-xl-8 col-lg-8 demo-tab-group">
         <mat-tab>
             <ng-template mat-tab-label>
                 User1
@@ -85,11 +85,11 @@
                                 <div ngbDropdown class="d-inline-block">
                                     <button class="btn btn-outline-primary" id="dropdown1" ngbDropdownToggle><i
                                             class="fa fa-cogs" aria-hidden="true"></i></button>
-                                    <div ngbDropdownMenu aria-labelledby="dropdown1">
+                                    <div ngbDropdownMenu class="" aria-labelledby="dropdown1">
                                         <button class="dropdown-item" [routerLink]="['../normalUser',user._id]">More
                                         </button>
-                                        <button class="dropdown-item">Another Action</button>
-                                        <button class="dropdown-item">Something else</button>
+                                        <button class="dropdown-item">Activate</button>
+                                        <button class="dropdown-item">Login As</button>
                                     </div>
                                 </div>
                             </td>
