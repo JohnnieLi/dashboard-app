@@ -1,14 +1,33 @@
+
 .main-container {
-    margin-left: 233px;
-    padding: 15px;
-    -ms-overflow-x: hidden;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    position: relative;
-    overflow: hidden;
+  grid-area: content;
+  margin-left: 233px;
+  padding: 15px;
+  -ms-overflow-x: hidden;
+  overflow: hidden;
+  margin-top: 5em;
+  position: relative;
 }
+
 @media screen and (max-width: 992px) {
-    .main-container {
-        margin-left: 0px !important;
-    }
+  .main-container {
+    margin-left: 0px !important;
+  }
+}
+
+@supports (grid-area: auto) {
+
+  #layout {
+    display: grid;
+    grid-template-areas: "header header" "menu content";
+  }
+
+  .main-menu {
+    grid-area: menu;
+  }
+
+  .main-container {
+    grid-area: content;
+    margin-left: 0 !important;
+  }
 }

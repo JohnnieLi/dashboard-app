@@ -7,7 +7,7 @@ import {NormalUserModule} from './normalUserProfile/normalUser.module';
 import {NormalUserComponent} from './normalUserProfile/normalUser.component';
 import {BusinessUserModule} from './businessUserProfile/businessUser.module';
 import {BusinessUserComponent} from './businessUserProfile/businessUser.component';
-
+import {TicketComponent} from './tickets/ticket.component';
 import {FormsModule} from '@angular/forms';
 import {UsernameFilterPipe} from './sharedPipes/usernameFiliter.pipe';
 import {FirstNameFilterPipe} from './sharedPipes/firstNameFilter.pipe';
@@ -60,6 +60,7 @@ const routes: Routes = [
     declarations: [
         UserManagerComponent,
         AdminsManagerComponent,
+        TicketComponent,
         FirstNameFilterPipe,
         UsernameFilterPipe,
         LastNameFilterPipe,
