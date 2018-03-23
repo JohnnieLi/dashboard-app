@@ -18,6 +18,7 @@ import {MyOwnCustomMaterialModule} from '../CustomMaterialModule.module';
 import {AdminsManagerComponent} from './adminsMansger/adminsManager.component';
 import {OnlySuperAdminGuard} from '../guards/onlySuperAdminGuard';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SharedComponentModule } from './components/sharedComponent.module';
 
 const routes: Routes = [
     {
@@ -49,13 +50,18 @@ const routes: Routes = [
                 component: AdminsManagerComponent,
                 canActivate: [OnlySuperAdminGuard]
             },
+            {
+                path: 'tickets',
+                component: TicketComponent,
+            },
 
         ]
     }
 ];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), NgbModule, MyOwnCustomMaterialModule, NormalUserModule, BusinessUserModule],
+    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), NgbModule, SharedComponentModule,
+        MyOwnCustomMaterialModule, NormalUserModule, BusinessUserModule],
     exports: [RouterModule],
     declarations: [
         UserManagerComponent,

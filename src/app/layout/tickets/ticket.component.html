@@ -1,5 +1,75 @@
 <div id="tickets">
+    <div class="row">
 
+        <div class="col col-lg-8">
+            <div class="example-header">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+            </div>
+
+            <div class="example-container mat-elevation-z8">
+
+                <mat-table [dataSource]="dataSource" matSort>
+
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="TicketID">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> TicketID</mat-header-cell>
+                        <mat-cell *matCellDef="let row" > {{row.topic_id}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Progress Column -->
+                    <ng-container matColumnDef="progress">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Subject</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.subject}}</mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+                    </ng-container>
+
+                    <!-- Color Column -->
+                    <!--<ng-container matColumnDef="color">-->
+                        <!--<mat-header-cell *matHeaderCellDef mat-sort-header> Color</mat-header-cell>-->
+                        <!--<mat-cell *matCellDef="let row" [style.color]="row.color">-->
+                            <!--{{row.color}}-->
+                        <!--</mat-cell>-->
+                    <!--</ng-container>-->
+                    <ng-container matColumnDef="action">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Action</mat-header-cell>
+                        <mat-cell *matCellDef="let row" (click)="$event.stopPropagation()">
+                            <button (click)="onReply(row)">
+                                <mat-icon>reply</mat-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> status</mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <div>{{row.status}}</div>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    </mat-row>
+
+
+                </mat-table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+        </div>
+
+        <div class="col col-lg-4">
+            <app-chat [hidden]="chatHidden"  [messages]="selectedMessages"></app-chat>
+        </div>
+
+    </div>
 
 
 </div>

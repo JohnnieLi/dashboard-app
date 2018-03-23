@@ -2,11 +2,12 @@ $topnav-background-color: #222;
 .sidebar {
     border-radius: 0;
     position: fixed;
-    z-index: 1000;
+    //z-index: 1000;
     top: 56px;
-    left: 200px;
-    width: 200px;
-    margin-left: -200px;
+    min-height: auto;
+    //left: 200px;
+    //width: 200px;
+    //margin-left: -200px;
     border: none;
     border-radius: 0;
     overflow-y: auto;
@@ -120,10 +121,10 @@ $topnav-background-color: #222;
     }
 }
 @media screen and (max-width: 992px) {
-    .sidebar {
-        top: 54px;
-        left: 0px;
-    }
+    //.sidebar {
+    //    top: 54px;
+    //    left: 0px;
+    //}
 }
 
 ::-webkit-scrollbar {

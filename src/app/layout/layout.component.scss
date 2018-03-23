@@ -1,11 +1,16 @@
 
+#layout {
+  margin-top: 56px;
+  min-height: 90vh;
+}
+
+
 .main-container {
   grid-area: content;
   margin-left: 233px;
   padding: 15px;
   -ms-overflow-x: hidden;
   overflow: hidden;
-  margin-top: 5em;
   position: relative;
 }
 
@@ -19,7 +24,8 @@
 
   #layout {
     display: grid;
-    grid-template-areas: "header header" "menu content";
+    grid-template-columns: 13em calc(100% - 13em);
+    grid-template-areas: "menu content";
   }
 
   .main-menu {
