@@ -7,7 +7,7 @@ import {NormalUserModule} from './normalUserProfile/normalUser.module';
 import {NormalUserComponent} from './normalUserProfile/normalUser.component';
 import {BusinessUserModule} from './businessUserProfile/businessUser.module';
 import {BusinessUserComponent} from './businessUserProfile/businessUser.component';
-
+import {TicketComponent} from './tickets/ticket.component';
 import {FormsModule} from '@angular/forms';
 import {UsernameFilterPipe} from './sharedPipes/usernameFiliter.pipe';
 import {FirstNameFilterPipe} from './sharedPipes/firstNameFilter.pipe';
@@ -18,6 +18,7 @@ import {MyOwnCustomMaterialModule} from '../CustomMaterialModule.module';
 import {AdminsManagerComponent} from './adminsMansger/adminsManager.component';
 import {OnlySuperAdminGuard} from '../guards/onlySuperAdminGuard';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SharedComponentModule } from './components/sharedComponent.module';
 
 const routes: Routes = [
     {
@@ -49,17 +50,23 @@ const routes: Routes = [
                 component: AdminsManagerComponent,
                 canActivate: [OnlySuperAdminGuard]
             },
+            {
+                path: 'tickets',
+                component: TicketComponent,
+            },
 
         ]
     }
 ];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), NgbModule, MyOwnCustomMaterialModule, NormalUserModule, BusinessUserModule],
+    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), NgbModule, SharedComponentModule,
+        MyOwnCustomMaterialModule, NormalUserModule, BusinessUserModule],
     exports: [RouterModule],
     declarations: [
         UserManagerComponent,
         AdminsManagerComponent,
+        TicketComponent,
         FirstNameFilterPipe,
         UsernameFilterPipe,
         LastNameFilterPipe,
