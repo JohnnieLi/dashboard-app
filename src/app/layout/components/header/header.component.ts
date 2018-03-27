@@ -8,12 +8,9 @@ import { Router, NavigationEnd } from '@angular/router';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    pushRightClass: string = 'push-right';
+    pushRightClass = 'push-right';
 
     constructor(public router: Router) {
-
-       
-
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&
@@ -47,6 +44,5 @@ export class HeaderComponent implements OnInit {
     }
 
     changeLang(language: string) {
-     
     }
 }

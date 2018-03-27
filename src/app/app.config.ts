@@ -9,7 +9,8 @@ export interface IAppConfig {
 }
 
 export const AppConfig: IAppConfig = {
-    apiEndpoint: 'http://localhost:5000/api',
+    // apiEndpoint: 'http://localhost:5000/api',
+    apiEndpoint: 'https://www.autobestinfo.com/api',
     localData: true,
     localPath: 'assets/localData'
     // https://server.driversprite.com/api

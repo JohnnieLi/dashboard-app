@@ -18,6 +18,13 @@ export class AdminsManagerComponent implements OnInit {
     public roleSelectorHidden: boolean;
     public roleRadiosValue = 90; // default role
 
+    firstNameSearchText: string;
+    lastNameSearchText: string;
+    usernameSearchText: string;
+    authTypeSearchText: string;
+    statusSearchNumber: number;
+
+
     constructor(public dashService: DashboardService, private modalService: NgbModal) {
         this.selectedAdmin = new User();
         this.addedAdmin = new User();

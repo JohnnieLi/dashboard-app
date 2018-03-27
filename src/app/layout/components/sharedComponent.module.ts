@@ -10,7 +10,7 @@ import {PostListComponent} from './postList/postList.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ChartsModule as Ng2Charts} from 'ng2-charts';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import {HeaderComponent} from './header/header.component';
 @NgModule({
     imports: [
         CommonModule, Ng2Charts, NgbModule
@@ -22,7 +22,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         StatComponent,
         ChatComponent,
         PostListComponent,
-        ProfileComponent
+        ProfileComponent,
+        HeaderComponent
     ],
     exports: [
         TimelineComponent,
