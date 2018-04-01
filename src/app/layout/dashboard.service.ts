@@ -95,6 +95,8 @@ export class DashboardService {
             return this.http.post(this.config.apiEndpoint + '/dashboard/deleteAdminUser', {adminUser: adminUser});
         }
     }
+
+
     // public getBusinessManByIdWithUserId(_id:string, user_id:string):Observable<any>{
     //     return this.http.get(this.config.apiEndpoint+'/editMyDetail?_id='+_id+'&user_id='+user_id);
     // }

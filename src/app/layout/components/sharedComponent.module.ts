@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
+import {FormsModule} from '@angular/forms';
 import {TimelineComponent} from './timeline/timeline.component';
 import {NotificationComponent} from './notification/notification.component';
 import {ChartsComponent} from './chart/chart.component';
@@ -13,7 +13,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HeaderComponent} from './header/header.component';
 @NgModule({
     imports: [
-        CommonModule, Ng2Charts, NgbModule
+        CommonModule, Ng2Charts, NgbModule, FormsModule
     ],
     declarations: [
         TimelineComponent,

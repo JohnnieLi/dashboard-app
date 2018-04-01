@@ -61,6 +61,11 @@ export class TicketComponent implements OnInit, AfterViewInit {
     }
 
 
+    sendMessage(event) {
+        console.log('ticket', event);
+    }
+
+
     transferMailsByTopic() {
         const transferedMails = {};
         const mapArray = [];
@@ -78,13 +83,13 @@ export class TicketComponent implements OnInit, AfterViewInit {
         for (const key in transferedMails) {
             if (transferedMails.hasOwnProperty(key)) {
                 console.log(key);
-                const sortedByDateMessage = transferedMails[key].sort(function(a, b){
+                const sortedByDateMessage = transferedMails[key].sort(function (a, b) {
                     return new Date(b.date).valueOf() - new Date(a.date).valueOf();
                 });
                 const IndexOfLast = sortedByDateMessage.length - 1;
                 const mapObject = {
-                    topic_id : key,
-                    name : transferedMails[key][0].fromUser,
+                    topic_id: key,
+                    name: transferedMails[key][0].fromUser,
                     date: transferedMails[key][0].date,
                     subject: transferedMails[key][0].subject,
                     messages: sortedByDateMessage,
@@ -95,15 +100,13 @@ export class TicketComponent implements OnInit, AfterViewInit {
         }
         console.log(mapArray);
         // order by date
-        mapArray.sort(function(a, b){
+        mapArray.sort(function (a, b) {
             return new Date(b.date).valueOf() - new Date(a.date).valueOf();
         });
-        console.log('sorted' , mapArray);
+        console.log('sorted', mapArray);
         return mapArray;
     }
 }
-
-
 
 
 const mail1 = new Mail();

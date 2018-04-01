@@ -7,6 +7,7 @@ import {APP_CONFIG, AppConfig} from './app.config';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoginService} from './login.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import {LoginService} from './login.service';
     imports: [
         BrowserModule,
         NgbModule.forRoot(),
+        FormsModule,
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule
