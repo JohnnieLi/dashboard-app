@@ -62,6 +62,7 @@ export class ChatComponent implements OnInit, OnChanges {
             const selfUser = new User();
             selfUser._id = currentUser._id;
             selfUser.username = currentUser.username;
+            selfUser.firstName = currentUser.firstName;
             return selfUser;
         } else {
             return null;
