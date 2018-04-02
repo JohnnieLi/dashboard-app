@@ -4,8 +4,8 @@ import {Message} from '../../../models/Message';
 
 @Component({
     selector: 'app-chat',
-    templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.scss'],
+    templateUrl: './chat1.component.html',
+    styleUrls: ['./chat1.component.scss'],
 })
 export class ChatComponent implements OnInit, OnChanges {
 
