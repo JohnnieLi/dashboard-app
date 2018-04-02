@@ -1,18 +1,24 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {User} from '../../dashboard.service';
+import {User} from '../../../models/User';
+import {Message} from '../../../models/Message';
 
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.scss']
+    styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnChanges {
 
     @Input()
     messages: Message[];
+    @Input()
+    service: any;
 
     typingMessage: string;
     recipient: User;
+    selfUser: User;
+    subject: string;
+    topic_id: string;
 
     @Output()
     send: EventEmitter<Message> = new EventEmitter<Message>();
@@ -23,50 +29,63 @@ export class ChatComponent implements OnInit, OnChanges {
 
 
     ngOnInit() {
-        this.messages = genernateMessages();
     }
 
     ngOnChanges(changes: SimpleChanges): void {
+        this.getRecipient();
+        this.typingMessage = '';
+        console.log('ngOnChanges', this.recipient);
+        console.log('ngOnChanges', this.selfUser);
     }
 
+    getRecipient() {
+        this.selfUser = this.getSelfUser();
+        if (this.selfUser && this.messages) {
+            const fromUser = this.messages[0].fromUser;
+            const toUser = this.messages[0].toUser;
+            if (fromUser._id === this.selfUser._id) {
+                this.recipient = toUser;
+            } else {
+                this.recipient = fromUser;
+            }
+            this.subject = this.messages[0].subject;
+            this.topic_id = this.messages[0].topic_id;
+        } else {
+            return null;
+        }
+    }
+
+
+    getSelfUser() {
+        if (localStorage.getItem('currentUser')) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const selfUser = new User();
+            selfUser._id = currentUser._id;
+            selfUser.username = currentUser.username;
+            return selfUser;
+        } else {
+            return null;
+        }
+    }
 
     sendMessage() {
-        const newMessage = new Message();
-        newMessage.content = this.typingMessage;
-        console.log(newMessage);
-        this.send.emit(newMessage);
+        if (this.recipient && this.typingMessage !== '') {
+            const newMessage = new Message();
+            newMessage.fromUser = this.selfUser;
+            newMessage.toUser = this.recipient;
+            newMessage.subject = this.subject;
+            newMessage.topic_id = this.topic_id;
+            newMessage.date = new Date();
+            newMessage.content = this.typingMessage;
+            newMessage.status = 1;
+            this.service.sendMessage(newMessage).subscribe(response => {
+                if (response.success) {
+                    this.messages.push(newMessage);
+                }
+            });
+        } else {
+        }
     }
-}
 
 
-/** Constants used to fill up our data base. */
-
-
-/** Builds and returns a new User. */
-function genernateMessages(): Message[] {
-    const msgs = [];
-    for (let i = 0; i < 3; i++) {
-        const message = {
-            id: IDS[i],
-            name: NAMES[i],
-            content: CONTENTS[i],
-            date: Date(),
-        };
-        msgs.push(message);
-    }
-    return msgs;
-}
-
-const IDS = ['1', '2', '3'];
-const NAMES = ['maroon', 'red', 'orange'];
-const CONTENTS = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.',
-];
-
-export class Message {
-    id: string;
-    name: string;
-    content: string;
-    date: Date;
 }

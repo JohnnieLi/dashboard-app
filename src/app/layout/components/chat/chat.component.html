@@ -40,13 +40,13 @@
     <div class="card-body">
         <ul class="chat">
             <li *ngFor="let message of messages" class="left clearfix">
-                <div *ngIf="message.fromUser != 'admin'; else elseBlock">
+                <div *ngIf="message.fromUser?._id != selfUser._id; else elseBlock">
                 <span class="chat-img pull-left">
                     <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
                 </span>
                     <div class="chat-body clearfix">
                         <div class="header">
-                            <strong class="primary-font">{{message.fromUser}}</strong>
+                            <strong class="primary-font">{{message.fromUser?.firstName}}</strong>
                             <small class="pull-right text-muted">
                                 <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
                             </small>
@@ -66,7 +66,7 @@
                             <small class=" text-muted">
                                 <i class="fa fa-clock-o fa-fw"></i> 13 mins ago
                             </small>
-                            <strong class="pull-right primary-font">{{message.fromUser}}</strong>
+                            <strong class="pull-right primary-font">{{message.fromUser?.firstName}}</strong>
                         </div>
                         <p>
                             {{message.content}}

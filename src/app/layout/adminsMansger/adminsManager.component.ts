@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DashboardService, User} from '../dashboard.service';
+import {DashboardService} from '../dashboard.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {User} from '../../models/User';
 
 @Component({
     selector: 'app-users',

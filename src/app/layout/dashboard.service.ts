@@ -6,6 +6,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {APP_CONFIG, IAppConfig} from '../app.config'; // global config
 import 'rxjs/add/operator/map';
 import {environment} from './../../environments/environment';
+import {User} from '../models/User';
+import {Message} from '../models/Message';
 
 @Injectable()
 export class DashboardService {
@@ -97,6 +99,16 @@ export class DashboardService {
     }
 
 
+    public sendMessage(message: Message): Observable<any> {
+        if (environment.localData) {
+            console.log('send Message service', message);
+            return this.http.get(this.config.localPath + '/adminLogin.json');
+        } else {
+            return this.http.post(this.config.apiEndpoint + '/message/sendMessage', {message: message});
+        }
+    }
+
+
     // public getBusinessManByIdWithUserId(_id:string, user_id:string):Observable<any>{
     //     return this.http.get(this.config.apiEndpoint+'/editMyDetail?_id='+_id+'&user_id='+user_id);
     // }
@@ -129,19 +141,6 @@ export class DashboardService {
 
 }
 
-export class User {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    username: string;
-    authType: string;
-    status: number;
-    role: number;
-    password: string;
-
-    constructor() {
-    }
-}
 
 
 export class Profile {
@@ -174,18 +173,17 @@ export class Comment {
 }
 
 
-export class subComment {
-    constructor(public _id: string,
-                public date: Date,
-                public businessManId: number,
-                public businessMan_Id: string,
-                public fromUser_Id: string,
-                public fromUsername: string,
-                public fromUserIamgePath: string,
-                public toUser_Id: string,
-                public toUsername: string,
-                public topic_Id: string,
-                public isTopic: Boolean,
-                public message: string) {
-    }
+export class SubComment {
+    public _id: string;
+    public date: Date;
+    public businessManId: number;
+    public businessMan_Id: string;
+    public fromUser_Id: string;
+    public fromUsername: string;
+    public fromUserIamgePath: string;
+    public toUser_Id: string;
+    public toUsername: string;
+    public topic_Id: string;
+    public isTopic: boolean;
+    public message: string;
 }
