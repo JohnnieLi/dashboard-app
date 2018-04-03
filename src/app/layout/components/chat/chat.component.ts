@@ -4,8 +4,8 @@ import {Message} from '../../../models/Message';
 
 @Component({
     selector: 'app-chat',
-    templateUrl: './chat1.component.html',
-    styleUrls: ['./chat1.component.scss'],
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnChanges {
 
@@ -23,6 +23,8 @@ export class ChatComponent implements OnInit, OnChanges {
     @Output()
     send: EventEmitter<Message> = new EventEmitter<Message>();
 
+    @Output()
+    close: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor() {
     }
@@ -82,10 +84,15 @@ export class ChatComponent implements OnInit, OnChanges {
             this.service.sendMessage(newMessage).subscribe(response => {
                 if (response.success) {
                     this.messages.push(newMessage);
+                    this.typingMessage = '';
                 }
             });
         } else {
         }
+    }
+
+    closeWindow() {
+        this.close.emit(true);
     }
 
 

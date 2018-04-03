@@ -66,6 +66,12 @@ export class TicketComponent implements OnInit, AfterViewInit {
         console.log('ticket', event);
     }
 
+    hideChat(event = false) {
+        if (event) {
+            this.chatHidden = true;
+        }
+    }
+
 
     transferMailsByTopic() {
         const transferedMails = {};
@@ -108,8 +114,6 @@ export class TicketComponent implements OnInit, AfterViewInit {
         return mapArray;
     }
 }
-
-
 
 
 const user1 = new User();

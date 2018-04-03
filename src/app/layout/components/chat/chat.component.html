@@ -1,91 +1,48 @@
-<div class="chat-panel card card-default">
-    <div class="card-header">
-        <i class="fa fa-comments fa-fw"></i>
-        Chat [ {{messages[0].subject}}]
-        <div class=" pull-right" ngbDropdown>
-            <button class="btn btn-secondary btn-sm" ngbDropdownToggle>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li role="menuitem"><a class="dropdown-item" href="#">
-                    <i class="fa fa-refresh fa-fw"></i> Refresh</a>
-                </li>
-                <li role="menuitem"><a class="dropdown-item" href="#">
-                    <i class="fa fa-check-circle fa-fw"></i> Available</a>
-                </li>
-                <li role="menuitem"><a class="dropdown-item" href="#">
-                    <i class="fa fa-times fa-fw"></i> Busy</a>
-                </li>
-                <li class="divider dropdown-divider"></li>
-                <li role="menuitem">
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-times fa-fw"></i> Busy
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-clock-o fa-fw"></i> Away
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                    </a>
-                </li>
-            </ul>
-        </div>
+<div class="chat-box">
+    <div class="chat-box-header">
+        {{recipient?.firstName}} : {{subject}}
+        <span class="chat-box-toggle"><i class="material-icons" (click)="closeWindow()">close</i></span>
     </div>
-    <!-- /.panel-heading -->
-    <div class="card-body">
-        <ul class="chat">
-            <li *ngFor="let message of messages" class="left clearfix">
-                <div *ngIf="message.fromUser?._id != selfUser._id; else elseBlock">
-                <span class="chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                </span>
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                            <strong class="primary-font">{{message.fromUser?.firstName}}</strong>
-                            <small class="pull-right text-muted">
-                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+    <div class="chat-box-body">
+        <div class="chat-box-overlay">
+        </div>
+        <div class="chat-logs">
+            <div *ngFor="let message of messages" class="left clearfix">
+                <div *ngIf="message.fromUser?._id == selfUser._id; else elseBlock">
+                    <div  class="chat-msg self">
+                 <span class="msg-avatar">
+                   <img src="https://image.crisp.im/avatar/operator/196af8cc-f6ad-4ef7-afd1-c45d5231387c/240/?1483361727745">
+                 </span>
+                        <div class="cm-msg-text">
+                            {{message.content}}
+                            <small>
+                                <br><i class="fa fa-clock-o fa-fw"></i> 13 mins ago
                             </small>
                         </div>
-                        <p>
-                            {{message.content}}
-                        </p>
                     </div>
                 </div>
 
                 <ng-template #elseBlock>
-                <span class="chat-img pull-right">
-                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                </span>
-                    <div class="chat-body clearfix">
-                        <div class="header">
-                            <small class=" text-muted">
-                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago
-                            </small>
-                            <strong class="pull-right primary-font">{{message.fromUser?.firstName}}</strong>
-                        </div>
-                        <p>
+                    <div class="chat-msg user">
+                 <span class="msg-avatar">
+                   <img src="https://image.crisp.im/avatar/operator/196af8cc-f6ad-4ef7-afd1-c45d5231387c/240/?1483361727745">
+                 </span>
+                        <div class="cm-msg-text">
                             {{message.content}}
-                        </p>
+                            <small>
+                                <br><i class="fa fa-clock-o fa-fw"></i>13 mins ago
+                            </small>
+                        </div>
                     </div>
                 </ng-template>
-            </li>
-        </ul>
+            </div>
+
+        </div><!--chat-log -->
     </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-        <div class="input-group">
-            <input id="btn-input" class="form-control input-sm" [(ngModel)]="typingMessage" placeholder="Type your message here...">
-            <span class="input-group-btn">
-                <button class="btn btn-warning btn-sm" id="btn-chat" (click)="sendMessage()">
-                    Send
-                </button>
-            </span>
-        </div>
+    <div class="chat-input">
+        <form>
+            <input type="text" name="typingMessage" id="chat-input" [(ngModel)]="typingMessage" placeholder="Send a message..."/>
+            <button type="submit" class="chat-submit" id="chat-submit" (click)="sendMessage()"><i class="material-icons">send</i></button>
+        </form>
     </div>
-    <!-- /.card-footer -->
 </div>
