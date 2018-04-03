@@ -1,11 +1,12 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {User} from '../../../models/User';
 import {Message} from '../../../models/Message';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
     selector: 'app-chat',
-    templateUrl: './chat1.component.html',
-    styleUrls: ['./chat1.component.scss'],
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnChanges {
 
@@ -26,9 +27,34 @@ export class ChatComponent implements OnInit, OnChanges {
     @Output()
     close: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+
+    // constructor(public dialogRef: MatDialogRef<ChatComponent>,
+    //             @Inject(MAT_DIALOG_DATA) public data: any) {
+    //
+    // }
+
+    // ngOnInit() {
+    //     if (this.data) {
+    //         this.messages = this.data.messages;
+    //         this.service = this.data.service;
+    //         this.getRecipient();
+    //         this.typingMessage = '';
+    //     }
+    // }
+
+    // closeWindow() {
+    //     if (this.dialogRef && this.data) {
+    //         this.dialogRef.close();
+    //     }
+    // }
+
+
     constructor() {
     }
 
+    closeWindow() {
+        this.close.emit(true);
+    }
 
     ngOnInit() {
     }
@@ -89,10 +115,6 @@ export class ChatComponent implements OnInit, OnChanges {
             });
         } else {
         }
-    }
-
-    closeWindow() {
-        this.close.emit(true);
     }
 
 

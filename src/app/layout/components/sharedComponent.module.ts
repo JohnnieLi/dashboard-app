@@ -33,7 +33,8 @@ import {HeaderComponent} from './header/header.component';
         ChatComponent,
         PostListComponent,
         ProfileComponent
-    ]
+    ],
+    entryComponents: [ ChatComponent ]
 })
 export class SharedComponentModule {
 }

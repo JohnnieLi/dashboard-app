@@ -1,9 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {DashboardService} from '../dashboard.service';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Message} from '../../models/Message';
 import {HashMap} from 'hashmap';
 import {User} from '../../models/User';
+import {ChatComponent} from '../components/chat/chat.component';
 
 @Component({
     selector: 'app-tickets',
@@ -22,7 +23,8 @@ export class TicketComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
 
 
-    constructor(public dashboardService: DashboardService) {
+    constructor(public dashboardService: DashboardService,
+                public dialog: MatDialog) {
         // Create 100 users
         const users = this.transferMailsByTopic();
         // Assign the data to the data source for the table to render
@@ -33,6 +35,7 @@ export class TicketComponent implements OnInit, AfterViewInit {
         this.chatHidden = false;
         this.selectedMessages = row.messages;
         console.log(row);
+        // this.openDialog();
     }
 
     ngAfterViewInit() {
@@ -59,6 +62,21 @@ export class TicketComponent implements OnInit, AfterViewInit {
         //         this.bPHelper.initPageHelper(this.businessUsers, 10);
         //     }
         // );
+    }
+
+
+    openDialog(): void {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.panelClass = 'custom-dialog-panel';
+
+        dialogConfig.data = {
+            messages: this.selectedMessages,
+            service: this.dashboardService
+        };
+
+        const dialogRef = this.dialog.open(ChatComponent, dialogConfig);
+
     }
 
 

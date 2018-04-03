@@ -65,12 +65,12 @@
             </div>
         </div>
 
-        <!--<div class="col col-lg-4">-->
-            <!--<app-chat [hidden]="chatHidden" [service]="dashboardService"  [messages]="selectedMessages" (send)="sendMessage($event)" (close)="hideChat($event)" ></app-chat>-->
-        <!--</div>-->
-        <div>
+        <div class="col col-lg-4">
             <app-chat [hidden]="chatHidden" [service]="dashboardService"  [messages]="selectedMessages" (send)="sendMessage($event)" (close)="hideChat($event)" ></app-chat>
         </div>
+        <!--<div>-->
+            <!--<app-chat [hidden]="chatHidden" [service]="dashboardService"  [messages]="selectedMessages" (send)="sendMessage($event)" (close)="hideChat($event)" ></app-chat>-->
+        <!--</div>-->
 
     </div>
 
