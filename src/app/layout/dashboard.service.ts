@@ -109,6 +109,25 @@ export class DashboardService {
     }
 
 
+
+    public getMessage(user_id: string): Observable<any> {
+        if (environment.localData) {
+            return this.http.get(this.config.localPath + '/adminLogin.json');
+        } else {
+            return this.http.post(this.config.apiEndpoint + '/message/get', {use_id: user_id});
+        }
+    }
+
+
+    public setMessageStatus(_id: string, status: number): Observable<any> {
+        if (environment.localData) {
+            return this.http.get(this.config.localPath + '/adminLogin.json');
+        } else {
+            return this.http.post(this.config.apiEndpoint + '/message/setStatus', {_id: _id, status: status});
+        }
+    }
+
+
     // public getBusinessManByIdWithUserId(_id:string, user_id:string):Observable<any>{
     //     return this.http.get(this.config.apiEndpoint+'/editMyDetail?_id='+_id+'&user_id='+user_id);
     // }

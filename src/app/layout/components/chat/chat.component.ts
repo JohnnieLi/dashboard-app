@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {User} from '../../../models/User';
 import {Message} from '../../../models/Message';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
     selector: 'app-chat',
@@ -115,6 +114,15 @@ export class ChatComponent implements OnInit, OnChanges {
             });
         } else {
         }
+    }
+
+
+    setMessageStatus(_id: string) {
+        this.service.setMessageStatus(_id, 2).subscribe(response => {
+            if (response.success) {
+
+            }
+        });
     }
 
 

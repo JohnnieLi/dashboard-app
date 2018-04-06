@@ -5,6 +5,7 @@ import {Message} from '../../models/Message';
 import {HashMap} from 'hashmap';
 import {User} from '../../models/User';
 import {ChatComponent} from '../components/chat/chat.component';
+import {Notification} from '../../models/Notification';
 
 @Component({
     selector: 'app-tickets',
@@ -25,10 +26,7 @@ export class TicketComponent implements OnInit, AfterViewInit {
 
     constructor(public dashboardService: DashboardService,
                 public dialog: MatDialog) {
-        // Create 100 users
-        const users = this.transferMailsByTopic();
-        // Assign the data to the data source for the table to render
-        this.dataSource = new MatTableDataSource(users);
+
     }
 
     onReply(row) {
@@ -50,20 +48,32 @@ export class TicketComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        // this.dashService.getUsers(0).subscribe(
-        //     data => {
-        //         this.normalUsers = data.users;
-        //         this.nPHelper.initPageHelper(this.normalUsers);
-        //     }
-        // );
-        // this.dashService.getUsers(1).subscribe(
-        //     data => {
-        //         this.businessUsers = data.users;
-        //         this.bPHelper.initPageHelper(this.businessUsers, 10);
-        //     }
-        // );
+        // Create 100 users
+        const users = this.transferMessagesByTopic(null);
+        // Assign the data to the data source for the table to render
+        this.dataSource = new MatTableDataSource(users);
     }
 
+
+    getMessage(user_id: string) {
+        const self = this;
+        this.dashboardService.getMessage(user_id).subscribe(response => {
+            if (response.succsee) {
+                const messages = self.transferMessagesByTopic(response.results);
+                self.dataSource = new MatTableDataSource(messages);
+            }
+        });
+    }
+
+    sendMessage(event) {
+        console.log('ticket', event);
+    }
+
+    hideChat(event = false) {
+        if (event) {
+            this.chatHidden = true;
+        }
+    }
 
     openDialog(): void {
         const dialogConfig = new MatDialogConfig();
@@ -79,44 +89,32 @@ export class TicketComponent implements OnInit, AfterViewInit {
 
     }
 
-
-    sendMessage(event) {
-        console.log('ticket', event);
-    }
-
-    hideChat(event = false) {
-        if (event) {
-            this.chatHidden = true;
-        }
-    }
-
-
-    transferMailsByTopic() {
-        const transferedMails = {};
+    transferMessagesByTopic(messages: [any]) {
+        const transferredMails = {};
         const mapArray = [];
 
         console.log('transferMailsByTopic original', mails);
         mails.map(function (value, index) {
             console.log(value.topic_id);
-            if (transferedMails[value.topic_id]) {
-                transferedMails[value.topic_id].push(value);
+            if (transferredMails[value.topic_id]) {
+                transferredMails[value.topic_id].push(value);
             } else {
-                transferedMails[value.topic_id] = [value];
+                transferredMails[value.topic_id] = [value];
             }
         });
-        console.log(transferedMails);
-        for (const key in transferedMails) {
-            if (transferedMails.hasOwnProperty(key)) {
+        console.log(transferredMails);
+        for (const key in transferredMails) {
+            if (transferredMails.hasOwnProperty(key)) {
                 console.log(key);
-                const sortedByDateMessage = transferedMails[key].sort(function (a, b) {
+                const sortedByDateMessage = transferredMails[key].sort(function (a, b) {
                     return new Date(b.date).valueOf() - new Date(a.date).valueOf();
                 });
                 const IndexOfLast = sortedByDateMessage.length - 1;
                 const mapObject = {
                     topic_id: key,
-                    name: transferedMails[key][0].fromUser.username,
-                    date: transferedMails[key][0].date,
-                    subject: transferedMails[key][0].subject,
+                    name: transferredMails[key][0].fromUser.username,
+                    date: transferredMails[key][0].date,
+                    subject: transferredMails[key][0].subject,
                     messages: sortedByDateMessage,
                     status: sortedByDateMessage[IndexOfLast].status
                 };
@@ -131,6 +129,51 @@ export class TicketComponent implements OnInit, AfterViewInit {
         console.log('sorted', mapArray);
         return mapArray;
     }
+
+    // used for notification
+    filterAllMessageNotifications(notifications: [Notification]) {
+        const transferredNotifications = {};
+        const mapArray = [];
+        if (notifications) {
+            notifications.forEach(function (value, index) {
+                if (!transferredNotifications[value.content_objectId]) {
+                    transferredNotifications[value.content_objectId] = value;
+                } else {
+                    if (new Date(transferredNotifications[value.content_objectId].date).valueOf() - new Date(value.date).valueOf() < 0) {
+                        transferredNotifications[value.content_objectId] = value;
+                    }
+                }
+            });
+            for (const key in transferredNotifications) {
+                if (transferredNotifications.hasOwnProperty(key)) {
+                    mapArray.push(transferredNotifications[key]);
+                }
+            }
+            mapArray.sort(function (a, b) {
+                return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+            });
+            return mapArray;
+        }
+        return null;
+    }
+
+    filterNewMessageNotification(mapArray: [Notification], notification: Notification) {
+        let isNew = true;
+        for (let i = 0; i < mapArray.length; i++) {
+            if (mapArray[i].content_objectId = notification.content_objectId) {
+                mapArray[i] = notification;
+                isNew = false;
+            }
+        }
+        if (isNew) {
+            mapArray.push(notification);
+        }
+        mapArray.sort(function (a, b) {
+            return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+        });
+        return mapArray;
+    }
+
 }
 
 
