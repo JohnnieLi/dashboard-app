@@ -19,6 +19,7 @@ import {AdminsManagerComponent} from './adminsMansger/adminsManager.component';
 import {OnlySuperAdminGuard} from '../guards/onlySuperAdminGuard';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SharedComponentModule } from './components/sharedComponent.module';
+import {FeatureTestComponent} from './featureTest.component';
 
 const routes: Routes = [
     {
@@ -54,6 +55,10 @@ const routes: Routes = [
                 path: 'tickets',
                 component: TicketComponent,
             },
+            {
+                path: 'feature',
+                component: FeatureTestComponent
+            },
 
         ]
     }
@@ -67,6 +72,7 @@ const routes: Routes = [
         UserManagerComponent,
         AdminsManagerComponent,
         TicketComponent,
+        FeatureTestComponent,
         FirstNameFilterPipe,
         UsernameFilterPipe,
         LastNameFilterPipe,

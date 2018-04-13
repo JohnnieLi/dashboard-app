@@ -1,0 +1,121 @@
+<div class="body" >
+
+    <!-- Step 2 -->
+    <div class="step step2">
+        <!-- Subscription -->
+        <div class="--subscription">
+            <h2>Select a Subscription Period</h2>
+            <!-- Radio Buttons Group -->
+            <div class="radioWrapp">
+                <div class="singleRadio">
+                    <input data-radio="Monthly" data-package=""   onclick="cycleCheck(this)" type="radio" name="radios"  id="monthy--radio" />
+                    <label for="monthy--radio"><strong>Monthly</strong> <hr> $16.00 every month</label>
+                </div>
+                <div class="singleRadio">
+                    <input data-radio="Yearly" data-package="" onclick="cycleCheck(this)"  type="radio"  checked="checked" name="radios" id="yearly--radio" />
+                    <label  for="yearly--radio"><strong>Yearly</strong> <hr> $14.00 × 12 months <small>|</small> <span>Save $24</span><badge class="strong">Most Popular</badge></label>
+                </div>
+                <div class="singleRadio" >
+                    <input data-radio="2 Years" onclick="cycleCheck(this)" type="radio" name="radios" id="2years--radio" />
+                    <label for="2years--radio"><strong>2 Years</strong> <hr> $11.00 × 24 months <small>|</small> <span>Save $120</span></label>
+                </div>
+                <div class="singleRadio">
+                    <input data-radio="3 Years" onclick="cycleCheck(this)" type="radio" name="radios" id="3years--radio" />
+                    <label for="3years--radio"><strong>3 Years</strong> <hr> $10.00 × 36 months <small>|</small> <span>Save $216</span></label>
+                </div>
+            </div>
+            <!-- Monthly Disclaimer -->
+            <div class="monthlyDisc">
+                <object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/info-tooltip.svg" type="image/svg+xml"></object><p>Monthly subscriptions do not include a free domain, premium apps and ad vouchers</p>
+            </div>
+            <!-- Radio Buttons Grou - End -->
+            <div class="price--full">
+                <div><h5>Plan Price</h5></div>
+                <div> <badge>Save $24 Every year</badge> <h5>$168.00</h5>
+                </div>
+
+            </div>
+
+            <button id="toStep3">Continue to Payment <object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/arrow-right.svg" type="image/svg+xml"></object></button>
+        </div>
+        <!-- Subscription - End -->
+
+        <!--&lt;!&ndash; Payment &ndash;&gt;-->
+        <!--<div class="&#45;&#45;payment">-->
+            <!--<h2>Complete Your Purchase</h2>-->
+            <!--<div class="cards">-->
+                <!--<div class="card users">-->
+                    <!--<div class="radio">-->
+                        <!--<input id="radio-5" name="radios2" type="radio" checked="checked">-->
+                        <!--<label for="radio_2" class="radio-label"><div><h3>My Saved Card</h3><p>XXXX-8357 Wix Wix</p></div></label>-->
+                    <!--</div>-->
+                    <!--<span><object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/payment-visa.svg" type="image/svg+xml"></object></span>-->
+                <!--</div>-->
+                <!--<div class="card other">-->
+                    <!--<div class="radio">-->
+                        <!--<input id="radio-6" name="radios2" type="radio">-->
+                        <!--<label for="radio_2" class="radio-label">Use another card</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+
+            <!--&lt;!&ndash; Details Pruchase  &ndash;&gt;-->
+            <!--<div class="detPurchase">-->
+                <!--<ul class="summary">-->
+                    <!--<li><b>Unlimited - Yearly Plan</b>-->
+                        <!--<c>$ 168.00</c>-->
+                    <!--</li>-->
+                    <!--<li><b><small>Enter Promo Code</small></b>-->
+                        <!--<c></c>-->
+                    <!--</li>-->
+                    <!--<li><b>VAT (17.00%)</b>-->
+                        <!--<c>$ 28.56</c>-->
+                    <!--</li>-->
+                    <!--<li><b>Total</b>-->
+                        <!--<c>$ 196.56</c>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; Details Pruchase - End &ndash;&gt;-->
+
+            <!--<button id="toStep3"> <object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/Lock.svg" type="image/svg+xml"></object>Submit</button>-->
+
+            <!--<div class="disclaimer">To ensure uninterrupted service, your subscription will automatically renew for US$ 119.34 on a monthly basis. You may disable auto-renewal or cancel your subscription at any time through your account.<br><br>By clicking Submit Purchase, you agree to-->
+                <!--our Terms of Use and Privacy Policy</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; Payment - End &ndash;&gt;-->
+
+
+        <!-- Selected Plan -->
+        <div class="--selectedPlan">
+            <div class="plan unlim selected">
+                <div class="--header">
+                    <h3>Unlimited</h3>
+                    <h5>Yearly subscription</h5>
+                </div>
+                <div class="monthlyTooltip">
+                    <object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/pPresent.svg" type="image/svg+xml"></object>
+                    <p>Select a yearly subscription
+                        <br>to get all plan features.</p>
+                </div>
+                <div class="--features">
+                    <ul>
+                        <li>UNLIMITED Bandwidth</li>
+                        <li>20GB Storage</li>
+                        <li>Connect Your Domain</li>
+                        <li>Remove Wix Ads</li>
+                        <li>Free Domain for 1 Year</li>
+                        <li>$300 Ad Vouchers</li>
+                        <li>Site Booster App - $60 Value</li>
+                        <li>Form Builder App - $48 Value</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Selected Plan - End -->
+    </div>
+    <!-- Step 2 - End -->
+
+</div>

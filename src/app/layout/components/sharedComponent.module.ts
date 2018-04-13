@@ -11,6 +11,9 @@ import {ProfileComponent} from './profile/profile.component';
 import {ChartsModule as Ng2Charts} from 'ng2-charts';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HeaderComponent} from './header/header.component';
+import {PlanComponent} from './planSelector/plan.component';
+import {PeriodPaymentComponent} from './periodSelector/periodPayment.component';
+
 @NgModule({
     imports: [
         CommonModule, Ng2Charts, NgbModule, FormsModule
@@ -23,7 +26,9 @@ import {HeaderComponent} from './header/header.component';
         ChatComponent,
         PostListComponent,
         ProfileComponent,
-        HeaderComponent
+        HeaderComponent,
+        PlanComponent,
+        PeriodPaymentComponent
     ],
     exports: [
         TimelineComponent,
@@ -32,7 +37,9 @@ import {HeaderComponent} from './header/header.component';
         StatComponent,
         ChatComponent,
         PostListComponent,
-        ProfileComponent
+        ProfileComponent,
+        PlanComponent,
+        PeriodPaymentComponent
     ],
     entryComponents: [ ChatComponent ]
 })

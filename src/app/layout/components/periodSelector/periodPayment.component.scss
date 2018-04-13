@@ -1,0 +1,397 @@
+
+// Vars -------------------------
+// Blacks
+$D10: #162D3D;
+$D20: #32536A;
+$D30: #577083;
+$D40: #7A92A5;
+$D50: #B6C1CD;
+$D55: #CBD3DC;
+$D60: #DFE5EB;
+$D70: #F0F4F7;
+$D80: #FFFFFF;
+// Blues
+$B05: #308DDD;
+$B10: #3899EC;
+$B20: #4EB7F5;
+$B30: #C1E4FE;
+$B40: #DAEFFE;
+$B50: #EAF7FF;
+// Premium
+$P00: #8E21B1;
+$P10: #AA4DC8;
+$P20: #CD68ED;
+$P30: #e5c9ee;
+$P40: #eedbf4;
+$P50: #FAEEFF;
+
+.body {
+  background: $D80;
+}
+
+.body:after {
+  position: absolute;
+  content: '';
+  height: 257px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -2;
+  background-image: linear-gradient(-43deg, #F1EEFF 1%, #E4F4FF 100%);
+}
+
+.body:before {
+  position: absolute;
+  content: '';
+  height: 257px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
+}
+
+.body {
+  display: flex;
+  color: $D10;
+  margin: 0 0 120px 0;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Heebo', sans-serif;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, white 100%)
+}
+
+.ease {
+  -webkit-transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1)
+}
+
+.easeFast {
+  -webkit-transition: all 420ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 420ms cubic-bezier(0.19, 1, 0.22, 1)
+}
+
+.gpu {
+  -webkit-transform: translatez(0);
+  -moz-transform: translatez(0);
+  -ms-transform: translatez(0);
+  -o-transform: translatez(0);
+  transform: translatez(0)
+}
+
+
+
+
+
+
+.step2 {
+  @extend .gpu;
+  backface-visibility: hidden;
+  display: none;
+  width: 849px;
+  opacity: 0;
+  align-items: flex-end;
+  flex-direction: row;
+  position: relative;
+}
+
+.step2 {
+  .--subscription {
+    @extend .gpu;
+    backface-visibility: hidden;
+    display: flex;
+    width: 492px;
+    opacity: 0;
+    margin: 0 72px 0 0;
+    flex-direction: column;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: 300;
+  }
+  button {
+    align-self: flex-end;
+    outline: 0;
+    width: 234px;
+    height: 42px;
+    background: $B10;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $B10;
+    border-radius: 50em;
+    font-size: 16px;
+    color: $D80;
+    @extend .easeFast;
+    &:hover {
+      cursor: pointer;
+      background: $B20;
+      border: 1px solid $B20;
+      @extend .easeFast;
+    }
+    &:active {
+      background: $B05;
+      border: 1px solid $B05;
+      @extend .easeFast;
+    }
+  }
+  object {
+    margin: 0 0 0 6px;
+  }
+}
+
+.radioWrapp {
+  background: $D80;
+  z-index: 991;
+  display: flex;
+  flex-direction: column;
+  margin: 42px 0 36px 0;
+}
+
+.singleRadio {
+  font-weight: 300;
+  display: inline-flex;
+  flex-direction: row;
+  margin: 0 0 24px 0;
+  align-items: center;
+  vertical-align: middle;
+  label {
+    display: inline-flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+input[type="radio"] {
+  background-color: $D80;
+  border: 1px solid $B10;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0 white;
+  margin: 0 18px 0 0;
+  cursor: pointer;
+  font: inherit;
+  position: relative;
+  min-height: 18px;
+  height: 18px;
+  outline: none;
+  width: 18px;
+  min-width: 18px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  @extend .easeFast;
+  &:after {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    right: -1px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/icon-check.svg');
+  }
+  &:checked {
+    background-color: $B10;
+    box-shadow: inset 0 0 0 4px $B10;
+    @extend .easeFast;
+  }
+  &:checked:after {
+    opacity: 1;
+  }
+}
+
+.singleRadio {
+  span {
+    font-weight: 400;
+  }
+  small {
+    color: $D60;
+    margin: 0 12px;
+  }
+  hr {
+    border: 1px solid $D60;
+    margin: 0 12px;
+    display: inline-flex;
+    width: 15px;
+    vertical-align: middle;
+  }
+  strong {
+    width: 60px;
+    font-weight: 400;
+    display: inline-flex;
+  }
+}
+
+.price--full {
+  margin: 0 0 42px 0;
+  display: flex;
+  vertical-align: center;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+  border-top: 1px solid $D60;
+  border-bottom: 1px solid $D60;
+  div {
+    display: flex;
+
+    badge {
+      margin: 0 9px 0 0
+    }
+
+    h5 {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 24px;
+      height: 20px
+    }
+  }
+}
+
+.monthlyDisc {
+  display: flex;
+  padding: 24px;
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  background: #FAFBFC;
+  height: 78px;
+  border: 1px solid #DFE5EB;
+  border-radius: 6px;
+  margin: -114px 0 36px 0;
+  object {
+    margin: 0 18px 0 0;
+  }
+  p {
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 400;
+    color: $D10;
+  }
+}
+
+badge {
+  margin: 0 0 0 9px;
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 2px;
+  color: $P10;
+  background: rgba($P10, 0.1);
+
+  badge .strong {
+    background: $P10;
+    color: $D80;
+  }
+
+}
+
+.--selectedPlan {
+  position: absolute;
+  top: 0;
+  right: 0;
+  @extend .gpu;
+  backface-visibility: hidden;
+
+  .plan .selected {
+    opacity: 1;
+    width: 270px;
+    &:hover {
+      box-shadow: 0 0 80px 0 rgba(22, 45, 61, 0);
+    }
+    .--header {
+      align-items: flex-start;
+      padding: 36px 24px 30px 24px;
+      & h3 {
+        margin: 0 0 6px 0;
+      }
+      & h5 {
+        margin: 0;
+        line-height: 18px;
+      }
+      &:after {
+        width: 222px;
+      }
+    }
+    .--features {
+      margin: 30px 0 30px 0;
+      ul {
+        li {
+          position: relative;
+          &:before {
+            margin: 0 12px 0 0;
+            position: relative;
+            content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/tick.svg');
+          }
+          &:after {
+            @extend .ease;
+          }
+        }
+      }
+    }
+
+    .monthlyTooltip {
+      position: absolute;
+      opacity: 0;
+      border: 1px solid $D60;
+      transform: translateX(200px) translateY(-25px);
+      color: $D10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      line-height: 18px;
+      z-index: 991;
+      bottom: 28%;
+      padding: 24px;
+      background: $D80;
+      box-shadow: 0 4px 30px -2px rgba(22, 45, 61, 0.08);
+      border-radius: 6px;
+      &:hover {
+        bottom: 29%;
+        cursor: pointer;
+        box-shadow: 0 8px 42px -2px rgba(22, 45, 61, 0.08);
+      }
+      &:active {
+        bottom: 28.5%;
+        box-shadow: 0 2px 24px -2px rgba(22, 45, 61, 0.10);
+      }
+      &:after,
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 12%;
+        top: 100%;
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
+      object {
+        margin: 0 18px 0 0
+      }
+      // Payment mini-step
+
+      .monthlyTooltip:after {
+        border-color: $D80 transparent transparent transparent;
+        border-width: 10px;
+      }
+      .monthlyTooltip:before {
+        left: 11.5%;
+        border-color: $D60 transparent transparent transparent;
+        border-width: 11px;
+      }
+    }
+
+  }
+}

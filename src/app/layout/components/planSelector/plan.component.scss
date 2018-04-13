@@ -1,0 +1,354 @@
+// Vars -------------------------
+// Blacks
+$D10: #162D3D;
+$D20: #32536A;
+$D30: #577083;
+$D40: #7A92A5;
+$D50: #B6C1CD;
+$D55: #CBD3DC;
+$D60: #DFE5EB;
+$D70: #F0F4F7;
+$D80: #FFFFFF;
+// Blues
+$B05: #308DDD;
+$B10: #3899EC;
+$B20: #4EB7F5;
+$B30: #C1E4FE;
+$B40: #DAEFFE;
+$B50: #EAF7FF;
+// Premium
+$P00: #8E21B1;
+$P10: #AA4DC8;
+$P20: #CD68ED;
+$P30: #e5c9ee;
+$P40: #eedbf4;
+$P50: #FAEEFF;
+
+.body {
+  background: $D80;
+}
+
+.body:after {
+  position: absolute;
+  content: '';
+  height: 257px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -2;
+  background-image: linear-gradient(-43deg, #F1EEFF 1%, #E4F4FF 100%);
+}
+
+.body:before {
+  position: absolute;
+  content: '';
+  height: 257px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
+}
+
+.body {
+  display: flex;
+  color: $D10;
+  margin: 0 0 120px 0;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Heebo', sans-serif;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, white 100%)
+}
+
+.ease {
+  -webkit-transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1)
+}
+
+.easeFast {
+  -webkit-transition: all 420ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 420ms cubic-bezier(0.19, 1, 0.22, 1)
+}
+
+.gpu {
+  -webkit-transform: translatez(0);
+  -moz-transform: translatez(0);
+  -ms-transform: translatez(0);
+  -o-transform: translatez(0);
+  transform: translatez(0)
+}
+
+// Navigation & Header
+.header {
+  padding: 78px 0 84px 0;
+  margin: 54px 0 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  & h1 {
+    margin: 0 0 18px 0;
+    font-size: 48px;
+    font-weight: 100;
+    color: $D10;
+  }
+  & h2 {
+    font-size: 16px;
+    font-weight: 400;
+    color: $D30
+  }
+}
+
+.bread {
+  padding: 0 84px;
+  display: none;
+  margin: 72px 0 0 0;
+  width: 100%;
+  // display: flex
+  align-content: flex-start;
+  span {
+    margin: 0 15px 0 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.back {
+  position: absolute;
+  top: 54px;
+  left: 0px;
+  padding: 0 0 0 36px;
+  display: flex;
+  align-items: center;
+  height: 84px;
+  width: 224px;
+  display: none;
+  opacity: 0;
+  @extend .ease;
+  span {
+    margin: 0 0 0 12px;
+    opacity: 0;
+    font-size: 14px;
+    color: $D10;
+    @extend .ease;
+    &:before {
+      content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/arrow-left.svg');
+    }
+    &:hover {
+      transform: translatex(-5px);
+      @extend .ease;
+      cursor: pointer;
+    }
+    &:active {
+      transform: translatex(-10px);
+      @extend .ease;
+    }
+  }
+  .back:hover > span {
+    opacity: 1;
+    @extend .ease;
+  }
+}
+
+// Plans ------------------
+
+.plansWrapp {
+  display: flex;
+  align-items: stretch;
+
+  .plan {
+    @extend .gpu;
+    backface-visibility: hidden;
+    width: 240px;
+    border: 1px solid $D60;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    background: $D80;
+    position: relative;
+    margin: 0 -1px 0 0;
+    transition: box-shadow 680ms cubic-bezier(0.19, 1, 0.22, 1);
+    &:hover {
+      transition: box-shadow 680ms cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: 999991;
+      box-shadow: 0 0 80px 0 rgba(22, 45, 61, 0.05);
+    }
+    &:first-child {;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+    .--header {
+      display: flex;
+      flex-direction: column;
+      padding: 42px 0 0 0;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        width: 204px;
+        height: 1px;
+        background: $D60;
+        margin: auto;
+        left: 0;
+        right: 0;
+      }
+    }
+    h3 {
+      font-size: 24px;
+      font-weight: 100;
+      margin: 0 0 12px 0;
+    }
+    h5 {
+      font-size: 14px;
+      margin: 0 0 24px 0;
+      line-height: 18px;
+    }
+    span {
+      font-size: 54px;
+      font-weight: 700;
+      margin: 0 0 6px -12px;
+      sup {
+        font-size: 17px;
+        margin: 6px 3px 0 0;
+        display: inline-block;
+        vertical-align: top;
+        font-weight: 300;
+      }
+    }
+    p {
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: $D40;
+      letter-spacing: 0.4px;
+    }
+    button {
+      margin: 30px 0 42px 0;
+      width: 160px;
+      border-radius: 30em;
+      height: 36px;
+      color: $P10;
+      font-weight: 300;
+      font-size: 16px;
+      border: 1px solid $P10;
+      @extend .easeFast;
+      outline: none;
+
+      &:hover {
+        background: $P10;
+        cursor: pointer;
+        color: $D80;
+        @extend .easeFast;
+        &:active {
+          background: $P00;
+          border: 1px solid $P00;
+        }
+
+      }
+    }
+  }
+
+  .plan:hover .popular {
+    box-shadow: 0 0 80px 0 rgba(22, 45, 61, 0)
+  }
+
+  .plan {
+    .--features {
+      padding: 0 24px;
+      margin: 36px 0 24px 0;
+
+      ul {
+        li {
+          @extend .ease;
+          margin: 0 0 24px 0;
+          font-size: 14px;
+          color: $D20;
+        }
+        &:last-child {
+          margin: 0
+        }
+      }
+    }
+  }
+
+  .monthly {
+    ul {
+      li {
+        &:nth-child(n+5) {
+          color: rgba(122, 146, 165, 0.60);
+          @extend .ease;
+        }
+
+        &:before {
+          display: none
+        }
+
+        &:after {
+          @extend .ease;
+          width: 11px;
+          margin: 0 12px 0 0;
+          position: relative;
+          content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/non.svg');
+          float: left
+
+        }
+      }
+    }
+  }
+
+  .popular {
+    backface-visibility: hidden;
+    z-index: 9991;
+    box-shadow: 0 0 80px 0 rgba(22, 45, 61, 0.05);
+    &:after {
+      position: absolute;
+      display: flex;
+      background: $P10;
+      color: $D80;
+      justify-content: center;
+      align-items: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      content: 'Most Popular';
+      top: -30px;
+      width: 240px;
+      height: 30px;
+      margin: auto;
+      left: -1px;
+      right: 0;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .--header {
+      button {
+        background: $P10;
+        border: 1px solid $P10;
+        color: $D80;
+
+        &:hover {
+          background: $P20;
+          border: 1px solid $P20;
+        }
+        &:active {
+          background: $P00;
+          border: 1px solid $P00
+        }
+      }
+    }
+  }
+
+}
