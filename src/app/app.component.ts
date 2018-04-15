@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
             this.isSuperAdmin = (role == '99');
             this.isAccountVisible = true;
             this.router.navigate(['/dashboard']);
-            //this.loginService.setProfilePictureUrl();
+            // this.loginService.setProfilePictureUrl();
         }
     }
 

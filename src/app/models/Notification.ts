@@ -6,7 +6,7 @@ export class Notification {
     content: string;
     type: string;
     content_id: string;
-    content_objectId: string; // for message
+    content_topicId: string; // for message
     content_from: string; // for comments
     readed: Boolean;
     status: Number;

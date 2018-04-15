@@ -79,8 +79,6 @@ $P50: #FAEEFF;
   transform: translatez(0)
 }
 
-
-
 // Navigation & Header
 .header {
   padding: 78px 0 84px 0;
@@ -346,10 +344,7 @@ $P50: #FAEEFF;
 
     }
 
-
-
   }
-
 
   .plan {
     -webkit-backface-visibility: hidden;
@@ -363,8 +358,7 @@ $P50: #FAEEFF;
     margin: 0 -1px 0 0;
     transition: box-shadow 680ms cubic-bezier(0.19, 1, 0.22, 1);
 
-
-     .--header {
+    .--header {
       display: flex;
       flex-direction: column;
       padding: 42px 0 0 0;
@@ -378,8 +372,7 @@ $P50: #FAEEFF;
       color: #32536A;
     }
 
-    }
-
+  }
 
   .--selectedPlan {
     position: absolute;
@@ -428,3 +421,54 @@ $P50: #FAEEFF;
   }
 
 }
+
+.detPurchase {
+  padding: 12px 0 0 0;
+  overflow: hidden;
+  transform-origin: top center;
+  @extend .ease;
+  border-top: 1px solid $D60;
+
+  .summary {
+    margin: 0px 0 0 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      position: relative;
+      color: $D10;
+      line-height: 2.75;
+      padding: 0 0 0 0;
+
+
+      & b {
+        font-weight: 300
+      }
+
+      & small {
+        font-size: 14px;
+        text-decoration: underline;
+        font-weight: 400;
+      }
+
+      &:last-child {
+        margin: 12px 0 0 0;
+        padding: 12px 0 0 0;
+        border-top: 1px solid $D60;
+        font-weight: 600;
+      }
+
+      & b, c {
+        font-weight: 400;
+        font-size: 20px;
+      }
+    }
+
+
+  }
+}
+
+// Animations
