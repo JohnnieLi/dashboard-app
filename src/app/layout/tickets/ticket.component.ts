@@ -136,11 +136,11 @@ export class TicketComponent implements OnInit, AfterViewInit {
         const mapArray = [];
         if (notifications) {
             notifications.forEach(function (value, index) {
-                if (!transferredNotifications[value.content_objectId]) {
-                    transferredNotifications[value.content_objectId] = value;
+                if (!transferredNotifications[value.content_topicId]) {
+                    transferredNotifications[value.content_topicId] = value;
                 } else {
-                    if (new Date(transferredNotifications[value.content_objectId].date).valueOf() - new Date(value.date).valueOf() < 0) {
-                        transferredNotifications[value.content_objectId] = value;
+                    if (new Date(transferredNotifications[value.content_topicId].date).valueOf() - new Date(value.date).valueOf() < 0) {
+                        transferredNotifications[value.content_topicId] = value;
                     }
                 }
             });
@@ -160,7 +160,7 @@ export class TicketComponent implements OnInit, AfterViewInit {
     filterNewMessageNotification(mapArray: [Notification], notification: Notification) {
         let isNew = true;
         for (let i = 0; i < mapArray.length; i++) {
-            if (mapArray[i].content_objectId = notification.content_objectId) {
+            if (mapArray[i].content_topicId = notification.content_topicId) {
                 mapArray[i] = notification;
                 isNew = false;
             }
