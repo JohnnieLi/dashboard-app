@@ -14,116 +14,92 @@
 
 <!-- First Steps -->
 <div class="step step1">
-    <div class="plansWrapp">
+    <div class="plansWrapp" >
         <!-- Single Plan -->
-        <div class="plan onStage vip" [ngClass]="{'selected': type ==3 &&selectedCategory == 1 }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
+        <div class="plan onStage " *ngFor="let plan of plans" [ngClass]="{'popular': (plan.isPopular && selectedCategory != plan.category), 'selected': type ==3 && selectedCategory == plan.category }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
             <div class="--header">
-                <h3>VIP</h3>
-                <h5>Everything and more</h5>
-                <span><sup>$</sup>25</span>
+                <h3>{{plan.title}}</h3>
+                <h5>{{plan.subTitle}}</h5>
+                <span><sup>$</sup>{{plan.fee}}</span>
                 <p>per month billed anually</p>
-                <button *ngIf="type!=1" data-plan="vip" data-package="plan_vip" data-dir="280" type="button"
-                        [disabled]="type ==3 &&selectedCategory == 1" (click)="onPlanSelected(1)" >Select</button>
+                <button *ngIf="type!=1" type="button"
+                        [disabled]="type ==3 && selectedCategory == plan.category" (click)="onPlanSelected(1)" >Select</button>
             </div>
             <div class="--features">
-                <ul>
-                    <li>UNLIMITED Bandwidth</li>
-                    <li>20GB Storage</li>
-                    <li>Connect Your Domain</li>
-                    <li>Remove Wix Ads</li>
-                    <li>Free Domain for 1 Year</li>
-                    <li>$300 Ad Vouchers</li>
+                <ul *ngFor="let feature of plan?.features">
+                    <li>{{feature}}</li>
                 </ul>
             </div>
         </div>
         <!-- Single Plan - End -->
 
         <!-- Single Plan -->
-        <div class="plan onStage ecom" [ngClass]="{'selected': type ==3 &&selectedCategory == 2 }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
-            <div class="--header">
-                <h3>eCommerce</h3>
-                <h5>Best for small businesses</h5>
-                <span><sup>$</sup>17</span>
-                <p>per month billed anually</p>
-                <button *ngIf="type!=1" data-plan="ecom" data-package="plan_ecom" data-dir="280" type="button"
-                        [disabled]="type ==3 &&selectedCategory == 2" (click)="onPlanSelected(2)">Select</button>
-            </div>
-            <div class="--features">
-                <ul>
-                    <li>UNLIMITED Bandwidth</li>
-                    <li>20GB Storage</li>
-                    <li>Connect Your Domain</li>
-                    <li>Remove Wix Ads</li>
-                    <li>Free Domain for 1 Year</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Single Plan - End -->
-
-
-        <!-- Single Plan -->
-        <div class="plan onStage unlim" [ngClass]="{'popular': type !=3 || (type ==3 && selectedCategory != 3), 'selected': (type ==3 && selectedCategory == 3) }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
-            <div class="--header">
-                <h3>Unlimited</h3>
-                <h5>Enterpreneur & Freelancers</h5>
-                <span><sup>$</sup>14</span>
-                <p>per month billed anually</p>
-                <button *ngIf="type!=1" data-plan="unlim" data-package="plan_unlimited" data-package="plan_unlimited" data-dir="160" type="button"
-                        [disabled]="type ==3 &&selectedCategory == 3" (click)="onPlanSelected(3)">Select</button>
-            </div>
-            <div class="--features">
-                <ul>
-                    <li>UNLIMITED Bandwidth</li>
-                    <li>20GB Storage</li>
-                    <li>Connect Your Domain</li>
-                    <li>Remove Wix Ads</li>
-                    <li>Free Domain for 1 Year</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Single Plan - End -->
-
-        <!-- Single Plan -->
-        <div class="plan onStage combo" [ngClass]="{'selected': type ==3 &&selectedCategory == 4 }"  style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
-            <div class="--header">
-                <h3>Combo</h3>
-                <h5>Personal use</h5>
-                <span><sup>$</sup>10</span>
-                <p>per month billed anually</p>
-                <button *ngIf="type!=1" data-plan="combo" data-dir="20" data-package="plan_combo" type="button"
-                         [disabled]="type ==3 &&selectedCategory == 4" (click)="onPlanSelected(4)">Select</button>
-            </div>
-            <div class="--features">
-                <ul>
-                    <li>UNLIMITED Bandwidth</li>
-                    <li>20GB Storage</li>
-                    <li>Connect Your Domain</li>
-                    <li>Remove Wix Ads</li>
-                    <li>Free Domain for 1 Year</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Single Plan - End -->
-
-        <!--&lt;!&ndash; Single Plan &ndash;&gt;-->
-        <!--<div class="plan onStage connect" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">-->
+        <!--<div class="plan onStage " [ngClass]="{'selected': type ==3 &&selectedCategory == 2 }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">-->
             <!--<div class="&#45;&#45;header">-->
-                <!--<h3>Connect Domain</h3>-->
-                <!--<h5>Most Basic</h5>-->
-                <!--<span><sup>$</sup>5</span>-->
+                <!--<h3>eCommerce</h3>-->
+                <!--<h5>Best for small businesses</h5>-->
+                <!--<span><sup>$</sup>17</span>-->
                 <!--<p>per month billed anually</p>-->
-                <!--<button *ngIf="type!=1" data-plan="connect" data-dir="-120" data-package="plan_connect" type="button"-->
-                        <!--onclick="step1Btn(this)" >Select</button>-->
+                <!--<button *ngIf="type!=1" data-plan="ecom" data-package="plan_ecom" data-dir="280" type="button"-->
+                        <!--[disabled]="type ==3 &&selectedCategory == 2" (click)="onPlanSelected(2)">Select</button>-->
             <!--</div>-->
             <!--<div class="&#45;&#45;features">-->
                 <!--<ul>-->
                     <!--<li>UNLIMITED Bandwidth</li>-->
                     <!--<li>20GB Storage</li>-->
                     <!--<li>Connect Your Domain</li>-->
+                    <!--<li>Remove Wix Ads</li>-->
+                    <!--<li>Free Domain for 1 Year</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!-- Single Plan - End -->
+
+
+        <!--&lt;!&ndash; Single Plan &ndash;&gt;-->
+        <!--<div class="plan onStage unlim" [ngClass]="{'popular': type !=3 || (type ==3 && selectedCategory != 3), 'selected': (type ==3 && selectedCategory == 3) }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">-->
+            <!--<div class="&#45;&#45;header">-->
+                <!--<h3>Unlimited</h3>-->
+                <!--<h5>Enterpreneur & Freelancers</h5>-->
+                <!--<span><sup>$</sup>14</span>-->
+                <!--<p>per month billed anually</p>-->
+                <!--<button *ngIf="type!=1" data-plan="unlim" data-package="plan_unlimited" data-package="plan_unlimited" data-dir="160" type="button"-->
+                        <!--[disabled]="type ==3 &&selectedCategory == 3" (click)="onPlanSelected(3)">Select</button>-->
+            <!--</div>-->
+            <!--<div class="&#45;&#45;features">-->
+                <!--<ul>-->
+                    <!--<li>UNLIMITED Bandwidth</li>-->
+                    <!--<li>20GB Storage</li>-->
+                    <!--<li>Connect Your Domain</li>-->
+                    <!--<li>Remove Wix Ads</li>-->
+                    <!--<li>Free Domain for 1 Year</li>-->
                 <!--</ul>-->
             <!--</div>-->
         <!--</div>-->
         <!--&lt;!&ndash; Single Plan - End &ndash;&gt;-->
+
+        <!--&lt;!&ndash; Single Plan &ndash;&gt;-->
+        <!--<div class="plan onStage combo" [ngClass]="{'selected': type ==3 &&selectedCategory == 4 }"  style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">-->
+            <!--<div class="&#45;&#45;header">-->
+                <!--<h3>Combo</h3>-->
+                <!--<h5>Personal use</h5>-->
+                <!--<span><sup>$</sup>10</span>-->
+                <!--<p>per month billed anually</p>-->
+                <!--<button *ngIf="type!=1" data-plan="combo" data-dir="20" data-package="plan_combo" type="button"-->
+                         <!--[disabled]="type ==3 &&selectedCategory == 4" (click)="onPlanSelected(4)">Select</button>-->
+            <!--</div>-->
+            <!--<div class="&#45;&#45;features">-->
+                <!--<ul>-->
+                    <!--<li>UNLIMITED Bandwidth</li>-->
+                    <!--<li>20GB Storage</li>-->
+                    <!--<li>Connect Your Domain</li>-->
+                    <!--<li>Remove Wix Ads</li>-->
+                    <!--<li>Free Domain for 1 Year</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; Single Plan - End &ndash;&gt;-->
+
 
     </div>
 </div>

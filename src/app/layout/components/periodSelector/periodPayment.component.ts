@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../../models/User';
 import {Message} from '../../../models/Message';
+import {Plan} from '../../../models/Plan';
 
 @Component({
     selector: 'app-period',
@@ -10,7 +11,7 @@ import {Message} from '../../../models/Message';
 export class  PeriodPaymentComponent implements OnInit {
 
     @Input()
-    messages: Message[];
+    plan: Plan;
     @Input()
     service: any;
 
