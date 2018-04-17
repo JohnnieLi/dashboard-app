@@ -18,39 +18,39 @@
             <!-- Radio Buttons Group -->
             <div class="radioWrapp">
                 <div class="singleRadio">
-                    <input data-radio="Monthly" data-package="" onclick="cycleCheck(this)" type="radio" name="radios"
+                    <input data-radio="Monthly" data-package="" (click)="onPeriodSelected('monthly')" type="radio" name="radios"
                            id="monthy--radio"/>
                     <label for="monthy--radio"><strong>Monthly</strong>
                         <hr>
-                        $16.00 every month</label>
+                        ${{plan?.fee}} every month</label>
                 </div>
                 <div class="singleRadio">
-                    <input data-radio="Yearly" data-package="" onclick="cycleCheck(this)" type="radio" checked="checked"
+                    <input data-radio="Yearly" data-package="" (click)="onPeriodSelected('yearly')" type="radio" checked="checked"
                            name="radios" id="yearly--radio"/>
                     <label for="yearly--radio"><strong>Yearly</strong>
                         <hr>
-                        $14.00 × 12 months
+                        ${{plan?.fee * plan.annualFeeDisAcount}} × 12 months
                         <small>|</small>
                         <span>Save $24</span><span class="badge strong">Most Popular</span></label>
                 </div>
-                <div class="singleRadio">
-                    <input data-radio="2 Years" onclick="cycleCheck(this)" type="radio" name="radios"
-                           id="2years--radio"/>
-                    <label for="2years--radio"><strong>2 Years</strong>
-                        <hr>
-                        $11.00 × 24 months
-                        <small>|</small>
-                        <span>Save $120</span></label>
-                </div>
-                <div class="singleRadio">
-                    <input data-radio="3 Years" onclick="cycleCheck(this)" type="radio" name="radios"
-                           id="3years--radio"/>
-                    <label for="3years--radio"><strong>3 Years</strong>
-                        <hr>
-                        $10.00 × 36 months
-                        <small>|</small>
-                        <span>Save $216</span></label>
-                </div>
+                <!--<div class="singleRadio">-->
+                    <!--<input data-radio="2 Years" onclick="cycleCheck(this)" type="radio" name="radios"-->
+                           <!--id="2years&#45;&#45;radio"/>-->
+                    <!--<label for="2years&#45;&#45;radio"><strong>2 Years</strong>-->
+                        <!--<hr>-->
+                        <!--$11.00 × 24 months-->
+                        <!--<small>|</small>-->
+                        <!--<span>Save $120</span></label>-->
+                <!--</div>-->
+                <!--<div class="singleRadio">-->
+                    <!--<input data-radio="3 Years" onclick="cycleCheck(this)" type="radio" name="radios"-->
+                           <!--id="3years&#45;&#45;radio"/>-->
+                    <!--<label for="3years&#45;&#45;radio"><strong>3 Years</strong>-->
+                        <!--<hr>-->
+                        <!--$10.00 × 36 months-->
+                        <!--<small>|</small>-->
+                        <!--<span>Save $216</span></label>-->
+                <!--</div>-->
             </div>
             <!-- Radio Buttons Grou - End -->
             <!--<div class="price&#45;&#45;full">-->
@@ -61,7 +61,7 @@
 
             <div class="detPurchase">
                 <ul class="summary">
-                    <li><b>Unlimited - Yearly Plan</b>
+                    <li><b>Unlimited - {{selectedPeriod}} Plan</b>
                         <span class="c"><span class="badge">Save $24 Every year</span>$ 168.00</span>
                     </li>
                     <li><b>HST (13.00%)</b>
@@ -85,19 +85,12 @@
              style="opacity: 1; transform: translateX(0px); transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
             <div class="plan selected ">
                 <div class="--header">
-                    <h3>Unlimited</h3>
+                    <h3>{{plan?.title}}</h3>
                     <h5>Yearly subscription</h5>
                 </div>
                 <div class="--features">
-                    <ul>
-                        <li>UNLIMITED Bandwidth</li>
-                        <li>20GB Storage</li>
-                        <li>Connect Your Domain</li>
-                        <li>Remove Wix Ads</li>
-                        <li>Free Domain for 1 Year</li>
-                        <li>$300 Ad Vouchers</li>
-                        <li>Site Booster App - $60 Value</li>
-                        <li>Form Builder App - $48 Value</li>
+                    <ul *ngFor="let feature of plan?.features">
+                        <li>{{feature}}</li>
                     </ul>
                 </div>
             </div>
