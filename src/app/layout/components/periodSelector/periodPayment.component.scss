@@ -410,8 +410,7 @@ $P50: #FAEEFF;
       }
       .--features {
         margin: 30px 0 30px 0;
-        ul {
-          li {
+        li {
             position: relative;
             &:before {
               margin: 0 12px 0 0;
@@ -422,7 +421,6 @@ $P50: #FAEEFF;
               @extend .ease;
             }
           }
-        }
       }
     }
   }

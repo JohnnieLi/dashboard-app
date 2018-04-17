@@ -9,6 +9,8 @@ $D55: #CBD3DC;
 $D60: #DFE5EB;
 $D70: #F0F4F7;
 $D80: #FFFFFF;
+// Greens
+$G05: #51926f;
 // Blues
 $B05: #308DDD;
 $B10: #3899EC;
@@ -99,6 +101,31 @@ $P50: #FAEEFF;
     font-size: 16px;
     font-weight: 400;
     color: $D30
+  }
+
+  button {
+    margin: 30px 0 5px 0;
+    width: 320px;
+    border-radius: 30em;
+    height: 72px;
+    color: $P10;
+    font-weight: 300;
+    font-size: 16px;
+    border: 1px solid $P10;
+    @extend .easeFast;
+    outline: none;
+
+    &:hover {
+      background: $P10;
+      cursor: pointer;
+      color: $D80;
+      @extend .easeFast;
+      &:active {
+        background: $P00;
+        border: 1px solid $P00;
+      }
+
+    }
   }
 }
 
@@ -347,6 +374,41 @@ $P50: #FAEEFF;
           background: $P00;
           border: 1px solid $P00
         }
+      }
+    }
+  }
+
+  .selected {
+    backface-visibility: hidden;
+    z-index: 9991;
+    box-shadow: 0 0 80px 0 rgba(22, 45, 61, 0.05);
+    &:after {
+      position: absolute;
+      display: flex;
+      background: $G05;
+      color: $D80;
+      justify-content: center;
+      align-items: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      content: 'Current Plan';
+      top: -30px;
+      width: 240px;
+      height: 30px;
+      margin: auto;
+      left: -1px;
+      right: 0;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .--header {
+      button {
+        background: $G05;
+        border: 1px solid $G05;
+        color: $D80;
       }
     }
   }
