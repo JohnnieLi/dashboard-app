@@ -16,7 +16,7 @@ export class PeriodPaymentComponent implements OnInit {
     selectedPeriod = 'Monthly';
 
     @Output()
-    send: EventEmitter<Message> = new EventEmitter<Message>();
+    completedPayment: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @Output()
     back: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -26,6 +26,7 @@ export class PeriodPaymentComponent implements OnInit {
     finalFee = 0;
     HST = 0;
     totalFee = 0;
+    completedPurchase = false;
 
     constructor() {
     }
@@ -59,6 +60,7 @@ export class PeriodPaymentComponent implements OnInit {
 
     openCheckout() {
         // https://stripe.com/docs/checkout#integration-custom
+        const self = this;
         const handler = (<any>window).StripeCheckout.configure({
             key: 'pk_test_oi0sKPJYLGjdvOXOM8tE8cMa',
             locale: 'auto',
@@ -66,6 +68,8 @@ export class PeriodPaymentComponent implements OnInit {
                 // You can access the token ID with `token.id`.
                 // Get the token ID to your server-side code for use.
                 console.log(token);
+                self.completedPurchase = true;
+                self.completedPayment.emit(true);
             }
         });
 

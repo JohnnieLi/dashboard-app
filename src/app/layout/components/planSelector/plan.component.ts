@@ -17,7 +17,7 @@ export class PlanComponent implements OnInit {
     @Input()
     type = 3; // 1:display  2:first time select  3:change plan
 
-    selectedCategory = 0;
+    selectedGrade = 0;
     @Output()
     selected: EventEmitter<any> = new EventEmitter<any>();
     constructor(public router: Router) {
@@ -27,7 +27,9 @@ export class PlanComponent implements OnInit {
         if (this.type === 3) {
             if (localStorage.getItem('currentUser')) {
                 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                this.selectedCategory = 3;
+                if(currentUser.grade){
+                    this.selectedGrade = currentUser.grade;
+                }
             }
         }
     }
