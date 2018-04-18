@@ -11,7 +11,7 @@ export class Plan {
     currentFee: number;
     annualFeeDiscount: number;
     features: string[];
-    category: number;
+    grade: number;
     subTitle: string;
     isPopular: boolean;
 }

@@ -13,7 +13,7 @@ export class PeriodPaymentComponent implements OnInit {
     plan: Plan;
     @Input()
     service: any;
-    selectedPeriod = 'monthly';
+    selectedPeriod = 'Monthly';
 
     @Output()
     send: EventEmitter<Message> = new EventEmitter<Message>();
@@ -43,11 +43,11 @@ export class PeriodPaymentComponent implements OnInit {
     onPeriodSelected(period) {
         this.selectedPeriod = period;
         switch (this.selectedPeriod) {
-            case 'monthly':
+            case 'Monthly':
                 this.finalFee = this.plan.fee;
                 break;
-            case 'yearly':
-                this.finalFee = this.annualFee * 12;
+            case 'Yearly':
+                this.finalFee = +(this.annualFee * 12).toFixed(2);
                 break;
             default:
                 this.finalFee = this.plan.fee;
@@ -57,4 +57,23 @@ export class PeriodPaymentComponent implements OnInit {
         this.totalFee = this.finalFee + this.HST;
     }
 
+    openCheckout() {
+        // https://stripe.com/docs/checkout#integration-custom
+        const handler = (<any>window).StripeCheckout.configure({
+            key: 'pk_test_oi0sKPJYLGjdvOXOM8tE8cMa',
+            locale: 'auto',
+            token: function (token: any) {
+                // You can access the token ID with `token.id`.
+                // Get the token ID to your server-side code for use.
+                console.log(token);
+            }
+        });
+
+        handler.open({
+            name: 'Premium Plan -' + this.plan.title,
+            description: this.selectedPeriod,
+            amount: this.totalFee * 100
+        });
+
+    }
 }

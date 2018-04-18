@@ -18,14 +18,14 @@
             <!-- Radio Buttons Group -->
             <div class="radioWrapp">
                 <div class="singleRadio">
-                    <input data-radio="Monthly" data-package="" (click)="onPeriodSelected('monthly')" type="radio"  checked="checked" name="radios"
+                    <input data-radio="Monthly" data-package="" (click)="onPeriodSelected('Monthly')" type="radio"  checked="checked" name="radios"
                            id="monthy--radio"/>
                     <label for="monthy--radio"><strong>Monthly</strong>
                         <hr>
                         ${{plan?.fee}} every month</label>
                 </div>
                 <div class="singleRadio">
-                    <input data-radio="Yearly" data-package="" (click)="onPeriodSelected('yearly')" type="radio"
+                    <input data-radio="Yearly" data-package="" (click)="onPeriodSelected('Yearly')" type="radio"
                            name="radios" id="yearly--radio"/>
                     <label for="yearly--radio"><strong>Yearly</strong>
                         <hr>
@@ -62,7 +62,7 @@
             <div class="detPurchase">
                 <ul class="summary">
                     <li><b>{{plan.title}} - {{selectedPeriod}} Plan</b>
-                        <span class="c"><span class="badge" *ngIf="selectedPeriod == 'yearly'">Save {{annualSaving}} Every year</span>$ {{finalFee}}</span>
+                        <span class="c"><span class="badge" *ngIf="selectedPeriod == 'Yearly'">Save {{annualSaving}} Every year</span>$ {{finalFee}}</span>
                     </li>
                     <li><b>HST (13.00%)</b>
                         <span class="c">$ {{HST}}</span>
@@ -73,7 +73,7 @@
                 </ul>
             </div>
 
-            <button id="toStep3">Continue to Payment
+            <button (click)="openCheckout()">Continue to Payment
                 <object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/arrow-right.svg"
                         type="image/svg+xml"></object>
             </button>

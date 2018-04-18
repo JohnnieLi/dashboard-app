@@ -16,14 +16,14 @@
 <div class="step step1">
     <div class="plansWrapp" >
         <!-- Single Plan -->
-        <div class="plan onStage " *ngFor="let plan of plans" [ngClass]="{'popular': (plan.isPopular && selectedCategory != plan.category), 'selected': type ==3 && selectedCategory == plan.category }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
+        <div class="plan onStage " *ngFor="let plan of plans" [ngClass]="{'popular': (plan.isPopular && selectedCategory != plan.grade), 'selected': type ==3 && selectedCategory == plan.grade }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
             <div class="--header">
                 <h3>{{plan.title}}</h3>
                 <h5>{{plan.subTitle}}</h5>
                 <span><sup>$</sup>{{plan.fee}}</span>
                 <p>per month billed anually</p>
                 <button *ngIf="type!=1" type="button"
-                        [disabled]="type ==3 && selectedCategory == plan.category" (click)="onPlanSelected(1)" >Select</button>
+                        [disabled]="type ==3 && selectedCategory == plan.grade" (click)="onPlanSelected(1)" >Select</button>
             </div>
             <div class="--features">
                 <ul *ngFor="let feature of plan?.features">
