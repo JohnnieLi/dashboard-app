@@ -39,6 +39,14 @@ export class LoginService {
         }
     }
 
+
+    public loginAs(_id: string): Observable<any>{
+        return this.http.post(this.config.apiEndpoint + '/auth/adminLog',
+            { _id: _id },
+            {headers: this.jwt()}
+            );
+    }
+
     // change Observable value
     setUserRoleSubject(role: String): void {
         // console.log("set Logintitle with:" + title);

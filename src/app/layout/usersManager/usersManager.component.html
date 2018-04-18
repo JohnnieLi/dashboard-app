@@ -89,13 +89,36 @@
                                         <button class="dropdown-item" [routerLink]="['../normalUser',user._id]">More
                                         </button>
                                         <button class="dropdown-item">Activate</button>
-                                        <button class="dropdown-item">Login As</button>
+                                        <button class="dropdown-item" (click)="loginAs(user._id, LogInAs)">Login As</button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+
+
+                    <ng-template #LogInAs let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title">LogIn As</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Confirm to LogIn?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <p>{{loginLink}}</p>
+                            <a target="_blank" href="{{loginLink}}" >LOGIN AS</a>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+                        </div>
+                    </ng-template>
+
+
+
                     <div >
                             <select   (change)="nPHelper.pageSizeChange($event.target.value)">
                                 <option value="1">1</option>

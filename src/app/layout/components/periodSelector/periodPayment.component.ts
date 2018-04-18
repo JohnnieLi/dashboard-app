@@ -33,7 +33,7 @@ export class PeriodPaymentComponent implements OnInit {
 
     ngOnInit() {
         console.log(this.plan);
-        this.annualFee = +((this.plan.fee * 1) * (this.plan.annualFeeDisAcount * 1)).toFixed(2);
+        this.annualFee = +((this.plan.fee * 1) * (this.plan.annualFeeDiscount * 1)).toFixed(2);
         this.annualSaving = +((this.plan.fee - this.annualFee) * 12).toFixed(2);
         this.finalFee = this.plan.fee;
         this.HST = +(this.finalFee * 0.13).toFixed(2);
