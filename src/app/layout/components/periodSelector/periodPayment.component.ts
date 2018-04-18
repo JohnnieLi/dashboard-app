@@ -19,7 +19,7 @@ export class PeriodPaymentComponent implements OnInit {
     send: EventEmitter<Message> = new EventEmitter<Message>();
 
     @Output()
-    close: EventEmitter<boolean> = new EventEmitter<boolean>();
+    back: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     annualFee = 0;
     annualSaving = 0;
@@ -74,6 +74,9 @@ export class PeriodPaymentComponent implements OnInit {
             description: this.selectedPeriod,
             amount: this.totalFee * 100
         });
+    }
 
+    goBack(){
+        this.back.emit(true);
     }
 }

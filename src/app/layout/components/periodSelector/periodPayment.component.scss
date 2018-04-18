@@ -104,7 +104,6 @@ $P50: #FAEEFF;
 
 .bread {
   padding: 0 84px;
-  display: none;
   margin: 72px 0 0 0;
   width: 100%;
   // display: flex
@@ -120,18 +119,17 @@ $P50: #FAEEFF;
 .back {
   position: absolute;
   top: 54px;
-  left: 0px;
+  left: 50px;
   padding: 0 0 0 36px;
   display: flex;
   align-items: center;
   height: 84px;
   width: 224px;
-  display: none;
-  opacity: 0;
+  opacity: 1;
   @extend .ease;
   span {
     margin: 0 0 0 12px;
-    opacity: 0;
+    opacity: 1;
     font-size: 14px;
     color: $D10;
     @extend .ease;

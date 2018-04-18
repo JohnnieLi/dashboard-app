@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-    isActive: boolean = false;
-    showMenu: string = '';
+    isActive = false;
+    showMenu = '';
 
     eventCalled() {
         this.isActive = !this.isActive;

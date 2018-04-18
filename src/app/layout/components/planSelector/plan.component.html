@@ -4,7 +4,7 @@
     <h1>Upgrade Your Account with a Premium Plan</h1>
     <h2>14 Days Money Back Guarntee on all Premim Plans</h2>
     <!-- Breadcrumbs -->
-    <div class="bread"><span>1. Select a Premium Plan</span><span>2. Select a Subscription Period</span><span>3. Complete Your Purchase</span></div>
+    <div class="bread" *ngIf="type!=1"><span><b>1. Select a Premium Plan</b></span><span>2. Select a Subscription Period</span><span>3. Complete Your Purchase</span></div>
     <div  class="back"><span>Plans</span></div>
     <button *ngIf="type==1" data-dir="280" type="button"
             (click)="onPremiumUserClicked()" >Become a Premium User</button>
@@ -23,7 +23,7 @@
                 <span><sup>$</sup>{{plan.fee}}</span>
                 <p>per month billed anually</p>
                 <button *ngIf="type!=1" type="button"
-                        [disabled]="type ==3 && selectedCategory == plan.grade" (click)="onPlanSelected(1)" >Select</button>
+                        [disabled]="type ==3 && selectedCategory == plan.grade" (click)="onPlanSelected(plan)" >Select</button>
             </div>
             <div class="--features">
                 <ul *ngFor="let feature of plan?.features">

@@ -1,0 +1,2 @@
+<app-plan *ngIf="plans && step ==1" [type]='palnSelectorType' [plans]="plans" (selected)="onPlanSelected($event)"></app-plan>
+<app-period *ngIf="plan && step == 2" [plan]="plan" (back)="goToStpe1($event)" ></app-period>

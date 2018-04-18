@@ -41,9 +41,8 @@ export class PlanComponent implements OnInit {
         }
     }
 
-    onPlanSelected(category) {
-        this.selected.emit(category);
-        console.log(category);
+    onPlanSelected(plan) {
+        this.selected.emit(plan);
     }
 
 

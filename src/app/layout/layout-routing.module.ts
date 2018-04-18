@@ -20,6 +20,7 @@ import {OnlySuperAdminGuard} from '../guards/onlySuperAdminGuard';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SharedComponentModule } from './components/sharedComponent.module';
 import {FeatureTestComponent} from './featureTest.component';
+import {PremiumPlanPaymentComponent} from './paymentProcess/premiumPlanPayment.component';
 
 const routes: Routes = [
     {
@@ -56,6 +57,10 @@ const routes: Routes = [
                 component: TicketComponent,
             },
             {
+                path: 'premiumPlan/:step',
+                component: PremiumPlanPaymentComponent
+            },
+            {
                 path: 'feature',
                 component: FeatureTestComponent
             },
@@ -72,6 +77,7 @@ const routes: Routes = [
         UserManagerComponent,
         AdminsManagerComponent,
         TicketComponent,
+        PremiumPlanPaymentComponent,
         FeatureTestComponent,
         FirstNameFilterPipe,
         UsernameFilterPipe,
