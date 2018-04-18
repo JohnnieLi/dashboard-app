@@ -18,20 +18,20 @@
             <!-- Radio Buttons Group -->
             <div class="radioWrapp">
                 <div class="singleRadio">
-                    <input data-radio="Monthly" data-package="" (click)="onPeriodSelected('monthly')" type="radio" name="radios"
+                    <input data-radio="Monthly" data-package="" (click)="onPeriodSelected('monthly')" type="radio"  checked="checked" name="radios"
                            id="monthy--radio"/>
                     <label for="monthy--radio"><strong>Monthly</strong>
                         <hr>
                         ${{plan?.fee}} every month</label>
                 </div>
                 <div class="singleRadio">
-                    <input data-radio="Yearly" data-package="" (click)="onPeriodSelected('yearly')" type="radio" checked="checked"
+                    <input data-radio="Yearly" data-package="" (click)="onPeriodSelected('yearly')" type="radio"
                            name="radios" id="yearly--radio"/>
                     <label for="yearly--radio"><strong>Yearly</strong>
                         <hr>
-                        ${{plan?.fee * plan.annualFeeDisAcount}} × 12 months
+                        ${{annualFee}} × 12 months
                         <small>|</small>
-                        <span>Save $24</span><span class="badge strong">Most Popular</span></label>
+                        <span>Save {{annualSaving}}</span><span class="badge strong">Most Popular</span></label>
                 </div>
                 <!--<div class="singleRadio">-->
                     <!--<input data-radio="2 Years" onclick="cycleCheck(this)" type="radio" name="radios"-->
@@ -61,14 +61,14 @@
 
             <div class="detPurchase">
                 <ul class="summary">
-                    <li><b>Unlimited - {{selectedPeriod}} Plan</b>
-                        <span class="c"><span class="badge">Save $24 Every year</span>$ 168.00</span>
+                    <li><b>{{plan.title}} - {{selectedPeriod}} Plan</b>
+                        <span class="c"><span class="badge" *ngIf="selectedPeriod == 'yearly'">Save {{annualSaving}} Every year</span>$ {{finalFee}}</span>
                     </li>
                     <li><b>HST (13.00%)</b>
-                        <span class="c">$ 28.56</span>
+                        <span class="c">$ {{HST}}</span>
                     </li>
                     <li><b>Total</b>
-                        <span class="c">$ 196.56</span>
+                        <span class="c">$ {{totalFee}}</span>
                     </li>
                 </ul>
             </div>
@@ -86,7 +86,7 @@
             <div class="plan selected ">
                 <div class="--header">
                     <h3>{{plan?.title}}</h3>
-                    <h5>Yearly subscription</h5>
+                    <h5>{{selectedPeriod}} subscription</h5>
                 </div>
                 <div class="--features">
                     <ul *ngFor="let feature of plan?.features">

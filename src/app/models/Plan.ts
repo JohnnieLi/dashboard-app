@@ -1,11 +1,17 @@
 export class Plan {
+
+    constructor(){
+        this.annualFeeDisAcount = 0.85;
+        this.isPopular = false;
+        this.features = [];
+    }
     _id: string;
     title: string;
     fee: number;
     currentFee: number;
-    annualFeeDisAcount: 0.85;
+    annualFeeDisAcount: number;
     features: string[];
     category: number;
     subTitle: string;
-    isPopular = false;
+    isPopular: boolean;
 }

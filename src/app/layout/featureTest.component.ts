@@ -16,7 +16,7 @@ export class FeatureTestComponent implements OnInit {
 
     constructor(private router: Router, private loginService: LoginService) {
         this.hardCodePlans();
-        this.plan = this.plans[2];
+        this.plan = this.plans[0];
 
     }
 
