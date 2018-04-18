@@ -23,10 +23,13 @@ export class PeriodPaymentComponent implements OnInit {
 
     annualFee = 0;
     annualSaving = 0;
-    finalFee = 0;
     HST = 0;
-    totalFee = 0;
+    originalFee = 0; // originalFee = monthly fee Or annualFee(12 months)
+    promoDiscount = 1;
+    finalFee = 0;  // originalFee * promoDiscount
+    totalFee = 0; // finalFee + HST: the fee need to paid
     completedPurchase = false;
+
 
     constructor() {
     }
@@ -36,8 +39,9 @@ export class PeriodPaymentComponent implements OnInit {
         console.log(this.plan);
         this.annualFee = +((this.plan.fee * 1) * (this.plan.annualFeeDiscount * 1)).toFixed(2);
         this.annualSaving = +((this.plan.fee - this.annualFee) * 12).toFixed(2);
-        this.finalFee = this.plan.fee;
-        this.HST = +(this.finalFee * 0.13).toFixed(2);
+        this.originalFee = this.plan.fee;
+        this.finalFee = this.originalFee * this.promoDiscount;
+        this.HST = +(this.originalFee * 0.13).toFixed(2);
         this.totalFee = this.finalFee + this.HST;
     }
 
@@ -45,16 +49,19 @@ export class PeriodPaymentComponent implements OnInit {
         this.selectedPeriod = period;
         switch (this.selectedPeriod) {
             case 'Monthly':
-                this.finalFee = this.plan.fee;
+                this.originalFee = this.plan.fee;
+                this.finalFee = this.originalFee * this.promoDiscount;
                 break;
             case 'Yearly':
-                this.finalFee = +(this.annualFee * 12).toFixed(2);
+                this.originalFee = +(this.annualFee * 12).toFixed(2);
+                this.finalFee = this.originalFee * this.promoDiscount;
                 break;
             default:
-                this.finalFee = this.plan.fee;
+                this.originalFee = this.plan.fee;
+                this.finalFee = this.originalFee * this.promoDiscount;
                 break;
         }
-        this.HST = +(this.finalFee * 0.13).toFixed(2);
+        this.HST = +(this.originalFee * 0.13).toFixed(2);
         this.totalFee = this.finalFee + this.HST;
     }
 
