@@ -13,10 +13,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HeaderComponent} from './header/header.component';
 import {PlanComponent} from './planSelector/plan.component';
 import {PeriodPaymentComponent} from './periodSelector/periodPayment.component';
-
+import {PromoDialogComponent} from './periodSelector/periodPayment.component';
+import {MyOwnCustomMaterialModule} from '../../CustomMaterialModule.module';
 @NgModule({
     imports: [
-        CommonModule, Ng2Charts, NgbModule, FormsModule
+        CommonModule, Ng2Charts, NgbModule, FormsModule, MyOwnCustomMaterialModule
     ],
     declarations: [
         TimelineComponent,
@@ -28,7 +29,8 @@ import {PeriodPaymentComponent} from './periodSelector/periodPayment.component';
         ProfileComponent,
         HeaderComponent,
         PlanComponent,
-        PeriodPaymentComponent
+        PeriodPaymentComponent,
+        PromoDialogComponent
     ],
     exports: [
         TimelineComponent,
@@ -39,9 +41,10 @@ import {PeriodPaymentComponent} from './periodSelector/periodPayment.component';
         PostListComponent,
         ProfileComponent,
         PlanComponent,
-        PeriodPaymentComponent
+        PeriodPaymentComponent,
+        PromoDialogComponent
     ],
-    entryComponents: [ ChatComponent ]
+    entryComponents: [ ChatComponent, PromoDialogComponent ]
 })
 export class SharedComponentModule {
 }

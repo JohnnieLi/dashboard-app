@@ -66,9 +66,9 @@
             <div class="detPurchase">
                 <ul class="summary">
                     <li><b>{{plan.title}} - {{selectedPeriod}} Plan</b>
-                        <span class="c"><span class="badge" *ngIf="selectedPeriod == 'Yearly'">Save {{annualSaving}} Every year</span>$ {{originalFee}}</span>
+                        <span class="c"><span class="badge" *ngIf="selectedPeriod == 'Yearly'">Save {{annualSaving}} Every year</span><span [ngClass]="{'block': promoDiscount != 1}">$ {{originalFee}}</span></span>
                     </li>
-                    <li><b><small>Enter Promo Code</small></b> <span class="c" *ngIf="promoDiscount!=1">$ {{finalFee}}</span></li>
+                    <li><b><small (click)="openDialog()">Enter Promo Code</small></b> <span class="c" *ngIf="promoDiscount!=1">$ {{finalFee}}</span></li>
                     <li><b>HST (13.00%)</b>
                         <span class="c">$ {{HST}}</span>
                     </li>
@@ -78,7 +78,11 @@
                 </ul>
             </div>
 
-            <button (click)="openCheckout()">Continue to Payment
+            <button *ngIf="!special" (click)="openCheckout()">Continue to Payment
+                <object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/arrow-right.svg"
+                        type="image/svg+xml"></object>
+            </button>
+            <button *ngIf="special" (click)="innerPromotion()">Internal Promotion, Free!
                 <object data="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/arrow-right.svg"
                         type="image/svg+xml"></object>
             </button>

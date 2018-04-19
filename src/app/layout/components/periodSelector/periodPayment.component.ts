@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Message} from '../../../models/Message';
+import {Component, Inject, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Plan} from '../../../models/Plan';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
     selector: 'app-period',
@@ -30,8 +30,10 @@ export class PeriodPaymentComponent implements OnInit {
     totalFee = 0; // finalFee + HST: the fee need to paid
     completedPurchase = false;
 
+    special = false;
 
-    constructor() {
+
+    constructor(public dialog: MatDialog) {
     }
 
 
@@ -50,20 +52,43 @@ export class PeriodPaymentComponent implements OnInit {
         switch (this.selectedPeriod) {
             case 'Monthly':
                 this.originalFee = this.plan.fee;
-                this.finalFee = this.originalFee * this.promoDiscount;
+                this.finalFee = +(this.originalFee * this.promoDiscount).toFixed(2);
                 break;
             case 'Yearly':
                 this.originalFee = +(this.annualFee * 12).toFixed(2);
-                this.finalFee = this.originalFee * this.promoDiscount;
+                this.finalFee = +(this.originalFee * this.promoDiscount).toFixed(2);
                 break;
             default:
                 this.originalFee = this.plan.fee;
-                this.finalFee = this.originalFee * this.promoDiscount;
+                this.finalFee = +(this.originalFee * this.promoDiscount).toFixed(2);
                 break;
         }
         this.HST = +(this.originalFee * 0.13).toFixed(2);
         this.totalFee = this.finalFee + this.HST;
     }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(PromoDialogComponent, {
+            // width: '250px',
+            // data: { : this.name, animal: this.animal }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed', result);
+            switch (result) {
+                case 0:
+                    this.special = true;
+                    break;
+                default:
+                    this.promoDiscount = result;
+                    break;
+            }
+            this.finalFee = +(this.originalFee * this.promoDiscount).toFixed(2);
+            this.totalFee = this.finalFee + this.HST;
+            console.log(this.special);
+        });
+    }
+
 
     openCheckout() {
         // https://stripe.com/docs/checkout#integration-custom
@@ -87,7 +112,36 @@ export class PeriodPaymentComponent implements OnInit {
         });
     }
 
-    goBack(){
+    innerPromotion(){
+
+    }
+
+    goBack() {
         this.back.emit(true);
     }
+}
+
+
+@Component({
+    selector: 'app-promo-dialog',
+    templateUrl: './promo-dialog.html',
+})
+export class PromoDialogComponent {
+
+    code: string;
+    discount = 1;
+
+    constructor(public dialogRef: MatDialogRef<PromoDialogComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: any) {
+    }
+
+    submit() {
+        this.discount = 0;
+        this.dialogRef.close(this.discount);
+    }
+
+    onNoClick(): void {
+        this.dialogRef.close(1);
+    }
+
 }
