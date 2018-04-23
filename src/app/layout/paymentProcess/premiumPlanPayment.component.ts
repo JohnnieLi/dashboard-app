@@ -30,7 +30,7 @@ export class PremiumPlanPaymentComponent implements OnInit, OnDestroy {
                 if (localStorage.getItem('currentUser')) {
                     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
                     if (currentUser.grade) {
-                        this.palnSelectorType = 3; // plan selector: change select
+                        this.palnSelectorType = 2; // plan selector: change select
                     }
                 }
             }

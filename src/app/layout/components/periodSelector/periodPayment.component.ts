@@ -1,6 +1,7 @@
-import {Component, Inject, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Plan} from '../../../models/Plan';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
     selector: 'app-period',
@@ -33,7 +34,7 @@ export class PeriodPaymentComponent implements OnInit {
     special = false;
 
 
-    constructor(public dialog: MatDialog) {
+    constructor(public dialog: MatDialog, private http: HttpClient) {
     }
 
 
@@ -94,7 +95,7 @@ export class PeriodPaymentComponent implements OnInit {
         // https://stripe.com/docs/checkout#integration-custom
         const self = this;
         const handler = (<any>window).StripeCheckout.configure({
-            key: 'pk_test_oi0sKPJYLGjdvOXOM8tE8cMa',
+            key: 'pk_test_9Pf7Pyfh4GO0LWwhvrYiH4Vw',
             locale: 'auto',
             token: function (token: any) {
                 // You can access the token ID with `token.id`.
@@ -102,6 +103,11 @@ export class PeriodPaymentComponent implements OnInit {
                 console.log(token);
                 self.completedPurchase = true;
                 self.completedPayment.emit(true);
+                // daily  3daily  weekly  weekly2
+                self.http.post('http://localhost:3000/api/testPayment', {token: token, plan: 'weekly', discount: 1})
+                    .subscribe(response => {
+                        console.log(response);
+                    });
             }
         });
 
@@ -112,7 +118,7 @@ export class PeriodPaymentComponent implements OnInit {
         });
     }
 
-    innerPromotion(){
+    innerPromotion() {
 
     }
 
@@ -136,7 +142,7 @@ export class PromoDialogComponent {
     }
 
     submit() {
-        this.discount = 0;
+        this.discount = 0.9;
         this.dialogRef.close(this.discount);
     }
 
