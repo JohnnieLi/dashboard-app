@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Message} from '../../../models/Message';
 import {Router} from '@angular/router';
 import {Plan} from '../../../models/Plan';
+
+declare let introJs: Function;
 
 @Component({
     selector: 'app-plan',
@@ -20,6 +21,7 @@ export class PlanComponent implements OnInit {
     selectedGrade = 0;
     @Output()
     selected: EventEmitter<any> = new EventEmitter<any>();
+
     constructor(public router: Router) {
     }
 
@@ -27,7 +29,7 @@ export class PlanComponent implements OnInit {
         if (this.type === 3) {
             if (localStorage.getItem('currentUser')) {
                 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                if(currentUser.grade){
+                if (currentUser.grade) {
                     this.selectedGrade = currentUser.grade;
                 }
             }
@@ -45,6 +47,34 @@ export class PlanComponent implements OnInit {
 
     onPlanSelected(plan) {
         this.selected.emit(plan);
+    }
+
+
+    onintroJsClick() {
+        const intro = introJs();
+        intro.setOptions({
+            steps: [
+                {
+                    intro: 'Hello world!'
+                },
+                {
+                    element: document.querySelector('#step1'),
+                    intro: 'This is a tooltip.'
+                },
+                {
+                    element: document.querySelectorAll('#step2')[0],
+                    intro: "Ok, wasn't that fun?",
+                    position: 'right'
+                },
+                {
+                    element: '#step3',
+                    intro: 'More features, more fun.',
+                    position: 'left'
+                },
+            ]
+        });
+        intro.start();
+        introJs().start();
     }
 
 

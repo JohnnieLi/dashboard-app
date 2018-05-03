@@ -1,6 +1,11 @@
 <div class="body">
 <!-- Header -->
 <div class="header">
+
+    <!--<a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a>-->
+    <a class="btn btn-large btn-success" href="javascript:void(0);"(click)="onintroJsClick()">Show me how</a>
+
+
     <h1>Upgrade Your Account with a Premium Plan</h1>
     <h2>14 Days Money Back Guarntee on all Premim Plans</h2>
     <!-- Breadcrumbs -->
@@ -11,9 +16,8 @@
 </div>
 
 <!-- Header - End -->
-
-<!-- First Steps -->
-<div class="step step1">
+    <!-- First Steps -->
+<div class="step step1" id="step1">
     <div class="plansWrapp" >
         <!-- Single Plan -->
         <div class="plan onStage " *ngFor="let plan of plans" [ngClass]="{'popular': (plan.isPopular && selectedGrade != plan.grade), 'selected': type ==3 && selectedGrade == plan.grade }" style="transform: translateY(0px); opacity: 1; transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);">
@@ -22,7 +26,7 @@
                 <h5>{{plan.subTitle}}</h5>
                 <span><sup>$</sup>{{plan.fee}}</span>
                 <p>per month billed anually</p>
-                <button *ngIf="type!=1" type="button"
+                <button *ngIf="type!=1" type="button" id="step2"
                         [disabled]="type ==3 && selectedGrade == plan.grade" (click)="onPlanSelected(plan)" >Select</button>
             </div>
             <div class="--features">
