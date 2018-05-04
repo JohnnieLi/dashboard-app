@@ -14,6 +14,7 @@ import {HeaderComponent} from './header/header.component';
 import {PlanComponent} from './planSelector/plan.component';
 import {PeriodPaymentComponent} from './periodSelector/periodPayment.component';
 import {PromoDialogComponent} from './periodSelector/periodPayment.component';
+import {VideoComponent} from './video/video.component';
 import {MyOwnCustomMaterialModule} from '../../CustomMaterialModule.module';
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import {MyOwnCustomMaterialModule} from '../../CustomMaterialModule.module';
         HeaderComponent,
         PlanComponent,
         PeriodPaymentComponent,
-        PromoDialogComponent
+        PromoDialogComponent,
+        VideoComponent
     ],
     exports: [
         TimelineComponent,
@@ -42,7 +44,8 @@ import {MyOwnCustomMaterialModule} from '../../CustomMaterialModule.module';
         ProfileComponent,
         PlanComponent,
         PeriodPaymentComponent,
-        PromoDialogComponent
+        PromoDialogComponent,
+        VideoComponent
     ],
     entryComponents: [ ChatComponent, PromoDialogComponent ]
 })

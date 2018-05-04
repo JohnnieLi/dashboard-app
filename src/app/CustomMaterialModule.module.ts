@@ -6,13 +6,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatTabsModule, MatTableModule,
         MatFormFieldModule, MatInputModule, MatPaginatorModule, MatSortModule, MatIconModule,
-        MatDialogModule],
+        MatDialogModule, MatExpansionModule],
     exports: [MatButtonModule, MatCheckboxModule, MatTabsModule, MatTableModule,
         MatFormFieldModule, MatInputModule, MatPaginatorModule, MatSortModule, MatIconModule,
-        MatDialogModule],
+        MatDialogModule, MatExpansionModule],
 })
 export class MyOwnCustomMaterialModule {
 }

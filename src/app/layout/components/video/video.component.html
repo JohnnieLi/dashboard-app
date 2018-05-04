@@ -1,0 +1,116 @@
+<div class="app" [hidden]="type == 2">
+
+    <header class="ui-header">
+        <div class="ui-subheading">The best show you've ever seen</div>
+        <h1 class="ui-heading">@keyframers</h1>
+    </header>
+
+    <div class="ui-arrow"></div>
+
+    <nav class="ui-nav">
+        <a href="#">Coding</a>
+        <a href="#">Animating</a>
+        <a href="#">Streaming</a>
+        <a href="#">Punning</a>
+    </nav>
+
+
+    <div class="video-tile -first">
+        <img *ngIf="thumbImages" src={{thumbImages[0]}} />
+    </div>
+
+    <div class="video-tile -second">
+        <img *ngIf="thumbImages" src={{thumbImages[1]}} />
+    </div>
+
+    <div class="video-toggle">
+        <div class="video-toggle-inner">
+            <div class="video">
+                <div class="youtube">
+                    <div id="ytplayer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="app-edit" [hidden]="type == 1">
+
+    <header class="ui-header">
+        <div class="ui-subheading">The best show you've ever seen</div>
+        <h1 class="ui-heading">@AutoBestInfo</h1>
+        <p class="ui-heading" style="font-size: 1.5em;">video title: Shown as linkable title </p>
+        <p class="ui-heading" style="font-size: 1.5em;">YouTube URL: Can be copied from YouTube link</p>
+    </header>
+
+    <div class="ui-arrow"></div>
+
+    <div class="edit">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            #1 video
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Title">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="YouTube URL">
+                    </mat-form-field>
+
+                    <img style="width: 100px; height: 80px" *ngIf="thumbImages" src={{thumbImages[0]}} />
+                </mat-expansion-panel>
+
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            #2 video
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Type your Title and YouTube URL
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Title">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="YouTube URL">
+                    </mat-form-field>
+                </mat-expansion-panel>
+
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            #3 video
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Type your Title and YouTube URL
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Title">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="YouTube URL">
+                    </mat-form-field>
+                </mat-expansion-panel>
+
+
+            </mat-accordion>
+        </div>
+
+</div>
+
